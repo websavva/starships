@@ -1,3 +1,5 @@
+import type { Configuration } from "webpack";
+
 export interface WebpackConfigOptions {
   name: string;
   entry?: string;
@@ -7,8 +9,7 @@ export interface WebpackConfigOptions {
   disableDownloadingRemoteTypes?: boolean;
   devPort?: number;
   exposes?: Record<string, string>;
+  aliases?: Record<string, string>;
 }
 
-export function getWebpackConfig(
-  options: WebpackConfigOptions
-): typeof import("webpack").Configuration;
+export function getWebpackConfig(options: WebpackConfigOptions): Configuration;

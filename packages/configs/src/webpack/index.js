@@ -66,6 +66,7 @@ exports.getWebpackConfig = (options) => {
     },
     resolve: {
       extensions: [".ts", options.tsx ? ".tsx" : null, ".js"].filter(Boolean),
+      alias: options.aliases || {},
     },
     module: {
       rules: [
