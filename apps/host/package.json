@@ -1,0 +1,24 @@
+{
+  "name": "@starships/host",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/preset-react": "7.24.7",
+    "@babel/preset-typescript": "7.24.7",
+    "@types/react": "18.3.3",
+    "serve": "14.2.3",
+    "@types/react-dom": "18.3.0",
+    "@starships/configs": "workspace:*",
+    "@starships/module-federation-config": "workspace:*"
+  },
+  "scripts": {
+    "dev": "webpack-cli serve --mode development",
+    "serve": "serve dist -p 3001",
+    "build": "webpack --mode production",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}

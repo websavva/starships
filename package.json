@@ -1,0 +1,19 @@
+{
+  "name": "starships",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "engines": {
+    "node": "22.x",
+    "pnpm": "10.10.0"
+  },
+  "packageManager": "pnpm@10.10.0",
+  "pnpm": {
+    "neverBuiltDependencies": []
+  },
+  "scripts": {
+    "dev": "pnpm --filter \"./{packages,apps}/**\" --parallel dev",
+    "build": "pnpm --filter \"{packages,apps}/**\" build",
+    "clean": "pnpm --filter \"{packages,apps}/**\" --parallel clean"
+  }
+}

@@ -1,0 +1,10 @@
+const { getWebpackConfig } = require("@starships/configs");
+const moduleFederationConfig = require("@starships/module-federation-config");
+
+module.exports = getWebpackConfig({
+  name: "host",
+  tsx: true,
+  dir: __dirname,
+  devPort: 3000,
+  remotes: [moduleFederationConfig.ui_components.name],
+});
