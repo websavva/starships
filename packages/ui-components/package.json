@@ -5,7 +5,7 @@
   "devDependencies": {
     "@types/react": "19.2.6",
     "@types/react-dom": "19.2.3",
-    "@starships/configs": "workspace:*",
+    "@starships/webpack": "workspace:*",
     "serve": "14.2.3",
     "@starships/module-federation-config": "workspace:*"
   },

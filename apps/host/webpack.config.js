@@ -1,4 +1,4 @@
-const { getWebpackConfig } = require("@starships/configs");
+const { getWebpackConfig } = require("@starships/webpack");
 const moduleFederationConfig = require("@starships/module-federation-config");
 
 module.exports = getWebpackConfig({

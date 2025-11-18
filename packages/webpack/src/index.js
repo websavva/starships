@@ -9,7 +9,7 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const pkg = require("../../package.json");
+const pkg = require("../package.json");
 
 exports.getWebpackConfig = (options) => {
   const isProduction = process.env.NODE_ENV === "production";
@@ -93,7 +93,7 @@ exports.getWebpackConfig = (options) => {
         federationConfig: currentFederationConfig,
       }),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "../../public/index.html"),
+        template: path.resolve(__dirname, "../public/index.html"),
       }),
     ],
   };

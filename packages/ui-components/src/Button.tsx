@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import * as React from "react";
+import { colors } from "styles/colors";
 
 type ButtonProps = {
   $size: "small" | "large";
   $isMobile: boolean;
 };
 
-const Button = styled.button<ButtonProps>`
+export const Button = styled.button<ButtonProps>`
   background-color: red;
   color: white;
   border-radius: 5px;
@@ -24,7 +24,9 @@ const Button = styled.button<ButtonProps>`
   &:hover {
     transform: translateY(-2px);
   }
-  ${({ $isMobile }) => $isMobile && "width: 100%;"}
+  @media (max-width: 768px) {
+    ${({ $isMobile }) => $isMobile && "color: green;"}
+  }
 `;
 
 export default Button;
