@@ -71,6 +71,10 @@ exports.getWebpackConfig = (options) => {
     module: {
       rules: [
         {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: "asset/resource",
+        },
+        {
           test: options.tsx ? /\.tsx?$/ : /\.ts$/,
           loader: "babel-loader",
           exclude: /node_modules/,

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { starshipsApi } from 'api';
 
-import LocalButton from './Button';
+import LocalButton from '../src/Button';
 
 const App = () => (
   <div>
