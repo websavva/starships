@@ -13,5 +13,6 @@ module.exports = getWebpackConfig({
     "./colors": "./src/colors",
     "./breakpoints": "./src/breakpoints",
     "./fonts": "./src/fonts",
+    "./utils/create-color": "./src/utils/create-color",
   },
 });

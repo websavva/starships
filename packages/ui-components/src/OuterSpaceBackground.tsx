@@ -1,7 +1,11 @@
 import * as React from "react";
 import styled, { keyframes } from "styled-components";
 
+import { colors } from "styles/colors";
+
+// @ts-expect-error
 import stars from "./assets/stars.png";
+// @ts-expect-error
 import twinkling from "./assets/twinkling.png";
 
 const moveTwinkBack = keyframes`
@@ -23,7 +27,7 @@ const baseDiv = styled.div`
 `;
 
 const OuterSpaceBackgroundStars = styled(baseDiv)`
-  background: #000 url(${stars}) repeat top center;
+  background: ${colors.bgPrimary} url(${stars}) repeat top center;
 `;
 
 const OuterSpaceBackgroundTwinkling = styled(baseDiv)`

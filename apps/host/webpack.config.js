@@ -8,7 +8,10 @@ module.exports = getWebpackConfig({
   tsx: true,
   dir: __dirname,
   devPort: 3000,
-  remotes: [moduleFederationConfig.ui_components.name],
+  remotes: [
+    moduleFederationConfig.api.name,
+    moduleFederationConfig.ui_components.name,
+  ],
   aliases: {
     "@": path.resolve(__dirname, "src"),
   },

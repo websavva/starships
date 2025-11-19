@@ -6,6 +6,7 @@ import GlobalStyle from "ui_components/GlobalStyle";
 import Logo from "ui_components/Logo";
 
 import Layout from "@/components/Layout";
+import Home from "@/pages/Home";
 
 const StyledLogo = styled(Logo)`
   margin-top: 1rem;
@@ -21,16 +22,7 @@ const App = () => (
 
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <StyledLogo />
-
-              <h1>Home</h1>
-            </div>
-          }
-        />
+        <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
   </Layout>

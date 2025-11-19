@@ -40,6 +40,11 @@ exports.getWebpackConfig = (options) => {
               requiredVersion: pkg.dependencies["react-dom"],
             },
           },
+          {
+            "styled-components": {
+              singleton: true,
+            },
+          },
         ]
       : [],
   };

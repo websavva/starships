@@ -33,8 +33,8 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     min-height: 100vh;
     font-weight: 300;
-    font-family: ${fonts.primary};
-    color: ${colors.primary};
+    font-family: ${fonts.primary.toString()};
+    color: ${colors.primary.toString()};
   }
 
   a,

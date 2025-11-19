@@ -16,5 +16,8 @@ module.exports = getWebpackConfig({
     "./GlobalStyle": "./src/GlobalStyle",
     "./Logo": "./src/Logo",
     "./OuterSpaceBackground": "./src/OuterSpaceBackground",
+    "./Card": "./src/Card",
+    "./StarshipItem": "./src/StarshipItem",
+    "./styles/mq": "./src/styles/mq",
   },
 });
