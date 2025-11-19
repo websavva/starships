@@ -27,7 +27,7 @@ const baseDiv = styled.div`
 `;
 
 const OuterSpaceBackgroundStars = styled(baseDiv)`
-  background: ${colors.bgPrimary} url(${stars}) repeat top center;
+  background: ${colors.bgPrimary.toString()} url(${stars}) repeat top center;
 `;
 
 const OuterSpaceBackgroundTwinkling = styled(baseDiv)`

@@ -12,12 +12,14 @@ module.exports = getWebpackConfig({
     moduleFederationConfig.styles.name,
   ],
   exposes: {
+    "./styles/mq": "./src/styles/mq",
     "./Button": "./src/Button",
     "./GlobalStyle": "./src/GlobalStyle",
     "./Logo": "./src/Logo",
     "./OuterSpaceBackground": "./src/OuterSpaceBackground",
     "./Card": "./src/Card",
     "./StarshipItem": "./src/StarshipItem",
-    "./styles/mq": "./src/styles/mq",
+    "./Spinner": "./src/Spinner",
+    "./Pagination": "./src/Pagination",
   },
 });

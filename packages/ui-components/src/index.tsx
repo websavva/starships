@@ -2,3 +2,8 @@ export { GlobalStyle } from "./GlobalStyle";
 export { Button } from "./Button";
 export { Logo, LogoIcon } from "./Logo";
 export { OuterSpaceBackground } from "./OuterSpaceBackground";
+export { Pagination } from "./Pagination";
+export { Spinner } from "./Spinner";
+export { Card } from "./Card";
+export { StarshipItem } from "./StarshipItem";
+export { maxWidth, minWidth } from "./styles/mq";
