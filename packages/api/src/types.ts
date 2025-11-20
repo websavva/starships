@@ -20,8 +20,8 @@ export interface Starship {
 }
 
 export interface GetStarshipsParams {
-  page?: number;
-  search?: number;
+  page?: number | null;
+  search?: string | null;
 }
 
 export interface GetStarshipsResponse {

@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "strict": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./@mf-types/*"]
+    },
+  },
+  "include": ["src/**/*"]
+}

@@ -3,16 +3,27 @@ import styled from "styled-components";
 
 import OuterSpaceBackground from "ui_components/OuterSpaceBackground";
 
-export const Layout = ({
+const LayoutOuterSpaceBackground = styled(OuterSpaceBackground)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+export const Layout = styled(({
   children,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <div {...props}>
-      <OuterSpaceBackground />
+      <LayoutOuterSpaceBackground />
       {children}
     </div>
   );
-};
+})`
+  position: relative;
+  min-height: 100vh;
+`;
 
 export default Layout;

@@ -10,7 +10,9 @@ module.exports = getWebpackConfig({
   devPort: 3000,
   remotes: [
     moduleFederationConfig.api.name,
+    moduleFederationConfig.utils.name,
     moduleFederationConfig.ui_components.name,
+    moduleFederationConfig.styles.name,
   ],
   aliases: {
     "@": path.resolve(__dirname, "src"),

@@ -2,19 +2,24 @@
  * @type {Record<string, typeof import('./index.d.ts').ModuleFederationConfigItem>}
  */
 const config = {
+  utils: {
+    name: "utils",
+    devPort: 3001,
+  },
+
   styles: {
     name: "styles",
-    devPort: 3001,
+    devPort: 3002,
   },
 
   api: {
     name: "api",
-    devPort: 3002,
+    devPort: 3003,
   },
 
   ui_components: {
     name: "ui_components",
-    devPort: 3003,
+    devPort: 3004,
   },
 
 };
