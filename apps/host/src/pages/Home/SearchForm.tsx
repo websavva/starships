@@ -71,7 +71,7 @@ const SearchInput = styled.input`
 
 const ClearButton = styled.button`
   border-radius: 5px;
-  padding: 1rem 2rem;
+  padding: .5rem 2rem;
   filter: brightness(160%);
   background: ${colors.secondary.toString()};
   font-size: 1.7rem;

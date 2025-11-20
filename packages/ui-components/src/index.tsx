@@ -7,3 +7,5 @@ export { Spinner } from "./Spinner";
 export { Card } from "./Card";
 export { StarshipItem } from "./StarshipItem";
 export { maxWidth, minWidth } from "./styles/mq";
+export { MessageBox } from "./MessageBox";
+export { ErrorAlert } from "./ErrorAlert";

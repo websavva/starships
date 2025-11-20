@@ -21,5 +21,7 @@ module.exports = getWebpackConfig({
     "./StarshipItem": "./src/StarshipItem",
     "./Spinner": "./src/Spinner",
     "./Pagination": "./src/Pagination",
+    "./MessageBox": "./src/MessageBox",
+    "./ErrorAlert": "./src/ErrorAlert",
   },
 });

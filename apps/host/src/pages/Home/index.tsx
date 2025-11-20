@@ -1,14 +1,16 @@
 import * as React from "react";
-import { useEffect, useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { Link, useSearchParams } from "react-router";
 import styled from "styled-components";
 
-import { GetStarshipsResponse, starshipsApi, type Starship } from "api/index";
+import { GetStarshipsResponse, starshipsApi } from "api/index";
 import { Logo } from "ui_components/Logo";
 import StarshipItem from "ui_components/StarshipItem";
 import Card from "ui_components/Card";
 import Spinner from "ui_components/Spinner";
 import Pagination from "ui_components/Pagination";
+import MessageBox from "ui_components/MessageBox";
+import ErrorAlert from "ui_components/ErrorAlert";
 
 import {
   searchParamsToParams,
@@ -24,6 +26,7 @@ const StarshipsList = styled.ul`
   display: flex;
   flex-direction: column;
   overflow: auto;
+
   &::-webkit-scrollbar {
     appearance: none;
   }
@@ -48,7 +51,7 @@ const HomeContainer = styled.section`
 const StarshipsListCard = styled(Card)`
   padding: 1.5rem 2rem;
   min-height: 30rem;
-  height: calc(100vh - 16rem);
+  height: calc(100vh - 25rem);
   overflow: hidden;
 `;
 
@@ -64,6 +67,7 @@ const StarshipsSpinnerContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  align-self: center;
 `;
 
 const StarshipsSearchForm = styled(SearchForm)`
@@ -73,26 +77,44 @@ const StarshipsSearchForm = styled(SearchForm)`
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [pending, setPending] = useState(true);
+  const [starshipsResponse, setStarshipsResponse] =
+    useState<GetStarshipsResponse | null>(null);
+
   const params = useMemo(() => {
     return searchParamsToParams(getDefaultHomePageParams(), searchParams);
   }, [searchParams]);
 
   const { page, search } = params;
 
-  const [starshipsResponse, setStarshipsResponse] =
-    useState<GetStarshipsResponse | null>(null);
-
-  const [pending, setPending] = useState(true);
-
   useEffect(() => {
     setPending(true);
+    setError(null);
+
+    abortControllerRef.current = new AbortController();
 
     starshipsApi
-      .getStarships({ page, search: search || null })
+      .getStarships(
+        { page, search: search || null },
+        abortControllerRef.current.signal
+      )
       .then(setStarshipsResponse)
+      .catch((error) => {
+        if (error.name === "AbortError") {
+          return;
+        }
+        setError(error);
+      })
       .finally(() => {
         setPending(false);
       });
+
+    () => {
+      abortControllerRef.current?.abort();
+      abortControllerRef.current = null;
+    };
   }, [page, search]);
 
   const {
@@ -134,43 +156,45 @@ export const Home = () => {
 
   return (
     <HomeContainer>
-      <div>
-        <StarshipsLogo />
+      <StarshipsLogo />
 
-        <StarshipsSearchForm value={search} onChange={onSearchChange} />
+      <StarshipsSearchForm value={search} onChange={onSearchChange} />
 
-        <StarshipsListCard $clipHeight="35%" $clipWidth="13%">
-          {pending ? (
-            <StarshipsSpinnerContainer>
-              <Spinner />
-            </StarshipsSpinnerContainer>
-          ) : (
-            <StarshipsListContainer>
-              <StarshipsList>
-                {starships.map((starship) => (
-                  <li key={starship.name}>
-                    <Link to={`/starship/${starship.name}`}>
-                      <StarshipItem
-                        key={starship.name}
-                        name={starship.name}
-                        model={starship.model}
-                      />
-                    </Link>
-                  </li>
-                ))}
-              </StarshipsList>
+      <StarshipsListCard $clipHeight="35%" $clipWidth="13%">
+        {pending ? (
+          <StarshipsSpinnerContainer>
+            <Spinner />
+          </StarshipsSpinnerContainer>
+        ) : error ? (
+          <ErrorAlert>{error.message}</ErrorAlert>
+        ) : starships.length > 0 ? (
+          <StarshipsListContainer>
+            <StarshipsList>
+              {starships.map((starship) => (
+                <li key={starship.name}>
+                  <Link to={`/starship/${starship.name}`}>
+                    <StarshipItem
+                      key={starship.name}
+                      name={starship.name}
+                      model={starship.model}
+                    />
+                  </Link>
+                </li>
+              ))}
+            </StarshipsList>
 
-              <Pagination
-                hasNext={hasNextPage}
-                hasPrevious={hasPreviousPage}
-                page={page}
-                onNext={onNextPage}
-                onPrevious={onPreviousPage}
-              />
-            </StarshipsListContainer>
-          )}
-        </StarshipsListCard>
-      </div>
+            <Pagination
+              hasNext={hasNextPage}
+              hasPrevious={hasPreviousPage}
+              page={page}
+              onNext={onNextPage}
+              onPrevious={onPreviousPage}
+            />
+          </StarshipsListContainer>
+        ) : (
+          <MessageBox>No starships found</MessageBox>
+        )}
+      </StarshipsListCard>
     </HomeContainer>
   );
 };

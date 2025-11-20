@@ -15,16 +15,19 @@ export class StarshipsApi {
     // adapter: cacheAdapterEnhancer(axios.defaults.adapter as AxiosAdapter),
   });
 
-  async getStarships(params: GetStarshipsParams = {}) {
+  async getStarships(params: GetStarshipsParams = {}, signal?: AbortSignal) {
     const response = await this.axios.get<GetStarshipsResponse>("/", {
       params,
+      signal,
     });
 
     return response.data;
   }
 
-  async getStarship(id: string) {
-    const response = await this.axios.get<Starship>(`/${id}`);
+  async getStarship(id: string, signal?: AbortSignal) {
+    const response = await this.axios.get<Starship>(`/${id}`, {
+      signal,
+    });
 
     return response.data;
   }
