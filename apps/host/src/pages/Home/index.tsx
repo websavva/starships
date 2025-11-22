@@ -1,9 +1,8 @@
 import * as React from "react";
-import { useEffect, useState, useCallback, useMemo, useRef } from "react";
+import { useEffect, useCallback, useMemo } from "react";
 import { Link, useSearchParams } from "react-router";
 import styled from "styled-components";
 
-import { GetStarshipsResponse, starshipsApi } from "api/index";
 import { Logo } from "ui_components/Logo";
 import StarshipItem from "ui_components/StarshipItem";
 import Card from "ui_components/Card";
@@ -11,6 +10,8 @@ import Spinner from "ui_components/Spinner";
 import Pagination from "ui_components/Pagination";
 import MessageBox from "ui_components/MessageBox";
 import ErrorAlert from "ui_components/ErrorAlert";
+
+import { useApi } from "hooks/use-api";
 
 import {
   searchParamsToParams,
@@ -74,14 +75,10 @@ const StarshipsSearchForm = styled(SearchForm)`
   margin: 2rem 0;
 `;
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const abortControllerRef = useRef<AbortController | null>(null);
-  const [error, setError] = useState<Error | null>(null);
-  const [pending, setPending] = useState(true);
-  const [starshipsResponse, setStarshipsResponse] =
-    useState<GetStarshipsResponse | null>(null);
 
   const params = useMemo(() => {
     return searchParamsToParams(getDefaultHomePageParams(), searchParams);
@@ -89,31 +86,25 @@ export const Home = () => {
 
   const { page, search } = params;
 
+  const {
+    makeApiCall,
+    data: starshipsResponse,
+    error,
+    isPending,
+    isInitial,
+    cancelApiCall,
+  } = useApi("getStarships");
+
   useEffect(() => {
-    setPending(true);
-    setError(null);
+    const params = paramsToSearchParams(
+      { page, search },
+      getDefaultHomePageParams()
+    );
 
-    abortControllerRef.current = new AbortController();
+    makeApiCall(params);
 
-    starshipsApi
-      .getStarships(
-        { page, search: search || null },
-        abortControllerRef.current.signal
-      )
-      .then(setStarshipsResponse)
-      .catch((error) => {
-        if (error.name === "AbortError") {
-          return;
-        }
-        setError(error);
-      })
-      .finally(() => {
-        setPending(false);
-      });
-
-    () => {
-      abortControllerRef.current?.abort();
-      abortControllerRef.current = null;
+    return () => {
+      cancelApiCall();
     };
   }, [page, search]);
 
@@ -158,10 +149,14 @@ export const Home = () => {
     <HomeContainer>
       <StarshipsLogo />
 
-      <StarshipsSearchForm value={search} onChange={onSearchChange} />
+      <StarshipsSearchForm
+        value={search}
+        onChange={onSearchChange}
+        disabled={isPending || isInitial}
+      />
 
       <StarshipsListCard $clipHeight="35%" $clipWidth="13%">
-        {pending ? (
+        {isPending || isInitial ? (
           <StarshipsSpinnerContainer>
             <Spinner />
           </StarshipsSpinnerContainer>

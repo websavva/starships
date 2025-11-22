@@ -61,6 +61,22 @@ importers:
         specifier: 14.2.3
         version: 14.2.3
 
+  packages/hooks:
+    dependencies:
+      react:
+        specifier: 19.2.0
+        version: 19.2.0
+    devDependencies:
+      '@starships/module-federation-config':
+        specifier: workspace:*
+        version: link:../module-federation-config
+      '@starships/webpack':
+        specifier: workspace:*
+        version: link:../webpack
+      '@types/react':
+        specifier: 19.2.6
+        version: 19.2.6
+
   packages/module-federation-config: {}
 
   packages/styles:
@@ -99,6 +115,15 @@ importers:
       serve:
         specifier: 14.2.3
         version: 14.2.3
+
+  packages/utils:
+    devDependencies:
+      '@starships/module-federation-config':
+        specifier: workspace:*
+        version: link:../module-federation-config
+      '@starships/webpack':
+        specifier: workspace:*
+        version: link:../webpack
 
   packages/webpack:
     dependencies:

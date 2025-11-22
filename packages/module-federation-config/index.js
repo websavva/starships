@@ -22,6 +22,11 @@ const config = {
     devPort: 3004,
   },
 
+  hooks: {
+    name: "hooks",
+    devPort: 3005,
+  },
+
 };
 
 exports.moduleFederationConfig = config;

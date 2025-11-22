@@ -1,10 +1,11 @@
-import axios, { type AxiosInstance, type AxiosAdapter } from "axios";
+import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios";
 // import { cacheAdapterEnhancer } from "axios-extensions";
 
 import type {
   Starship,
   GetStarshipsParams,
   GetStarshipsResponse,
+  ApiRequestConfig,
 } from "./types";
 
 export * from "./types";
@@ -15,19 +16,20 @@ export class StarshipsApi {
     // adapter: cacheAdapterEnhancer(axios.defaults.adapter as AxiosAdapter),
   });
 
-  async getStarships(params: GetStarshipsParams = {}, signal?: AbortSignal) {
+  async getStarships(
+    params: GetStarshipsParams = {},
+    config: ApiRequestConfig = {}
+  ) {
     const response = await this.axios.get<GetStarshipsResponse>("/", {
+      ...config,
       params,
-      signal,
     });
 
     return response.data;
   }
 
-  async getStarship(id: string, signal?: AbortSignal) {
-    const response = await this.axios.get<Starship>(`/${id}`, {
-      signal,
-    });
+  async getStarship(id: string, config: ApiRequestConfig = {}) {
+    const response = await this.axios.get<Starship>(`/${id}`, config);
 
     return response.data;
   }

@@ -2,7 +2,7 @@ const { getWebpackConfig } = require("@starships/webpack");
 const moduleFederationConfig = require("@starships/module-federation-config");
 
 module.exports = getWebpackConfig({
-  entry: "./dev/bootstrap.tsx",
+  entry: "./dev/index.ts",
   name: moduleFederationConfig.ui_components.name,
   tsx: true,
   dir: __dirname,

@@ -126,6 +126,8 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (disabled) return;
+
     setLocalValue(e.target.value);
   };
 
