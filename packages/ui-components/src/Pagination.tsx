@@ -44,7 +44,7 @@ const PaginationButton = styled.button`
   }
 
   &:not(:disabled):hover {
-    background: ${colors.green.toString()};
+    background: ${colors.green.alpha(40).toString()};
     color: ${colors.primary.toString()};
   }
 `;
