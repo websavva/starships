@@ -20,14 +20,14 @@ const StyledImage = styled.img<{ $isLoaded: boolean }>`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity .5s ease-in-out;
-  opacity: ${({ $isLoaded }) => ($isLoaded ? .2 : 0)};
+  transition: opacity 0.5s ease-in-out;
+  opacity: ${({ $isLoaded }) => ($isLoaded ? 0.2 : 0)};
 `;
 
 export const BackgroundImage = ({
   id,
   ...props
-}: { id: number } & React.HTMLAttributes<HTMLImageElement>) => {
+}: { id: number } & Omit<React.HTMLAttributes<HTMLImageElement>, "id">) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const imgUrl = getShipImageUrl(id);
