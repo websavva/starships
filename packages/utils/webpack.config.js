@@ -12,5 +12,6 @@ module.exports = getWebpackConfig({
     "./debounce": "./src/debounce",
     "./search-params": "./src/search-params",
     "./upper-first": "./src/upper-first",
+    "./sleep": "./src/sleep",
   },
 });
