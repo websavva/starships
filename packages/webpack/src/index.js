@@ -1,8 +1,10 @@
+const path = require("path");
+
+const { readWorkspaceManifest } = require("@pnpm/workspace.read-manifest");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
 const { container } = require("webpack");
 const { ModuleFederationPlugin } = container;
-const path = require("path");
 const moduleFederationConfig = require("@starships/module-federation-config");
 
 const dotenv = require("dotenv");
@@ -11,7 +13,17 @@ dotenv.config();
 
 const pkg = require("../package.json");
 
-exports.getWebpackConfig = (options) => {
+exports.getWebpackConfig = (options) => async () => {
+  const {
+    catalog
+  } = await readWorkspaceManifest(
+    path.resolve(__dirname, "../../..")
+  );
+
+  const getPackageVersion = (name) => {
+    return catalog[name] || pkg.dependencies[name] || pkg.devDependencies[name];
+  };
+
   const isProduction = process.env.NODE_ENV === "production";
 
   const currentFederationConfig = {
@@ -31,18 +43,19 @@ exports.getWebpackConfig = (options) => {
           {
             react: {
               singleton: true,
-              requiredVersion: pkg.dependencies.react,
+              requiredVersion: getPackageVersion("react"),
             },
           },
           {
             "react-dom": {
               singleton: true,
-              requiredVersion: pkg.dependencies["react-dom"],
+              requiredVersion: getPackageVersion("react-dom"),
             },
           },
           {
             "styled-components": {
               singleton: true,
+              requiredVersion: getPackageVersion("styled-components"),
             },
           },
         ]

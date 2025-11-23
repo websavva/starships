@@ -2,8 +2,6 @@ import * as React from "react";
 import styled from "styled-components";
 import { useEffect, useState, useCallback } from "react";
 
-import { sleep } from "utils/sleep";
-
 // @ts-expect-error - Missing webpack types
 const shipImagesCtx = require.context("./images", false, /\.jpg$/);
 
@@ -15,7 +13,7 @@ const getShipImageUrl = (number: number) => {
   return shipImages[number % shipImages.length];
 };
 
-const StyledImage = styled.img<{ isLoaded: boolean }>`
+const StyledImage = styled.img<{ $isLoaded: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
@@ -23,7 +21,7 @@ const StyledImage = styled.img<{ isLoaded: boolean }>`
   height: 100%;
   object-fit: cover;
   transition: opacity .5s ease-in-out;
-  opacity: ${({ isLoaded }) => (isLoaded ? .2 : 0)};
+  opacity: ${({ $isLoaded }) => ($isLoaded ? .2 : 0)};
 `;
 
 export const BackgroundImage = ({
@@ -47,7 +45,7 @@ export const BackgroundImage = ({
       {...props}
       src={imgUrl}
       alt=""
-      isLoaded={isLoaded}
+      $isLoaded={isLoaded}
       onLoad={onLoad}
     />
   );
