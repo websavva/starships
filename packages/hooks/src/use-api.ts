@@ -148,72 +148,76 @@ export const useApi = <
     }
   );
 
-  const reset = () => {
+  const reset = useCallback(() => {
     dispatch({
       type: UseApiStatus.Initial,
     });
-  };
-
-  const makeApiCall = async (...args: Parameters<StarshipsApi[Method]>) => {
-    cancelApiCall();
-
-    reset();
-
-    dispatch({
-      type: UseApiStatus.Pending,
-    });
-
-    const abortController = new AbortController();
-    abortControllerRef.current = abortController;
-
-    const starshipsApiMethodArgsMaxCount = starshipsApi[method].length;
-
-    const config: ApiRequestConfig = {
-      signal: abortController.signal,
-    };
-
-    if (args.length < starshipsApiMethodArgsMaxCount) {
-      args.push(config);
-    } else {
-      const lastArg = args[starshipsApiMethodArgsMaxCount - 1];
-      args[starshipsApiMethodArgsMaxCount - 1] = {
-        ...(typeof lastArg === "object" ? lastArg : {}),
-        ...config,
-      };
-    }
-
-    try {
-      const responseData = (await starshipsApi[method](
-        // @ts-expect-error - we know that the args are correct
-        ...args
-      )) as ResponseData;
-
-      await onSuccess?.(responseData);
-
-      dispatch({
-        type: UseApiStatus.Success,
-        payload: responseData,
-      });
-    } catch (err: any) {
-      if (err.name === "AbortError") {
-        reset();
-
-        return;
-      }
-
-      await onError?.(err);
-
-      dispatch({
-        type: UseApiStatus.Error,
-        payload: err,
-      });
-    }
-  };
+  }, [dispatch]);
 
   const cancelApiCall = useCallback(() => {
     abortControllerRef.current?.abort();
     abortControllerRef.current = null;
   }, []);
+
+  const makeApiCall = useCallback(
+    async (...args: Parameters<StarshipsApi[Method]>) => {
+      cancelApiCall();
+
+      reset();
+
+      dispatch({
+        type: UseApiStatus.Pending,
+      });
+
+      const abortController = new AbortController();
+      abortControllerRef.current = abortController;
+
+      const starshipsApiMethodArgsMaxCount = starshipsApi[method].length;
+
+      const config: ApiRequestConfig = {
+        signal: abortController.signal,
+      };
+
+      if (args.length < starshipsApiMethodArgsMaxCount) {
+        args.push(config);
+      } else {
+        const lastArg = args[starshipsApiMethodArgsMaxCount - 1];
+        args[starshipsApiMethodArgsMaxCount - 1] = {
+          ...(typeof lastArg === "object" ? lastArg : {}),
+          ...config,
+        };
+      }
+
+
+      try {
+        const responseData = (await starshipsApi[method](
+          // @ts-expect-error - we know that the args are correct
+          ...args
+        )) as ResponseData;
+
+        await onSuccess?.(responseData);
+
+        dispatch({
+          type: UseApiStatus.Success,
+          payload: responseData,
+        });
+      } catch (err: any) {
+        if (err.name === "AbortError") {
+          reset();
+
+          return;
+        }
+
+        await onError?.(err);
+
+        dispatch({
+          type: UseApiStatus.Error,
+          payload: err,
+        });
+      }
+    },
+    [method, onSuccess, onError, dispatch, reset, cancelApiCall]
+  );
 
   const statusFlags = Object.fromEntries(
     Object.entries(UseApiStatus).map(([statusName, statusId]) => {

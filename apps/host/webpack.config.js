@@ -9,7 +9,7 @@ module.exports = getWebpackConfig({
   dir: __dirname,
   devPort: 3000,
   remotes: [
-    // moduleFederationConfig.api.name,
+    moduleFederationConfig.api.name,
     moduleFederationConfig.hooks.name,
     moduleFederationConfig.utils.name,
     moduleFederationConfig.ui_components.name,

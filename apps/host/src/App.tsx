@@ -5,6 +5,7 @@ import GlobalStyle from "ui_components/GlobalStyle";
 
 import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
+import Ship from "@/pages/Ship";
 
 
 const App = () => (
@@ -14,6 +15,8 @@ const App = () => (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+
+        <Route path="/starships/:id" element={<Ship />} />
       </Routes>
     </BrowserRouter>
   </Layout>

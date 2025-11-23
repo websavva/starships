@@ -23,5 +23,6 @@ module.exports = getWebpackConfig({
     "./Pagination": "./src/Pagination",
     "./MessageBox": "./src/MessageBox",
     "./ErrorAlert": "./src/ErrorAlert",
+    "./Accordion": "./src/Accordion",
   },
 });

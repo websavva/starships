@@ -61,6 +61,7 @@ exports.getWebpackConfig = (options) => {
         "Access-Control-Allow-Headers":
           "X-Requested-With, content-type, Authorization",
       },
+      historyApiFallback: true,
       static: {
         directory: path.join(options.dir, "dist"),
       },

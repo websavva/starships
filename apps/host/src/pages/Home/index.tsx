@@ -87,11 +87,12 @@ export const Home = () => {
   const { page, search } = params;
 
   const {
-    makeApiCall,
     data: starshipsResponse,
     error,
     isPending,
     isInitial,
+
+    makeApiCall,
     cancelApiCall,
   } = useApi("getStarships");
 
@@ -106,7 +107,7 @@ export const Home = () => {
     return () => {
       cancelApiCall();
     };
-  }, [page, search]);
+  }, [page, search, makeApiCall, cancelApiCall]);
 
   const {
     results: starships = [],
@@ -166,10 +167,9 @@ export const Home = () => {
           <StarshipsListContainer>
             <StarshipsList>
               {starships.map((starship) => (
-                <li key={starship.name}>
-                  <Link to={`/starship/${starship.name}`}>
+                <li key={starship.id}>
+                  <Link to={`/starships/${starship.id}`}>
                     <StarshipItem
-                      key={starship.name}
                       name={starship.name}
                       model={starship.model}
                     />

@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig } from "axios";
 
-export interface Starship {
+export interface BaseStarship {
   name: string;
   model: string;
   manufacturer: string;
@@ -21,6 +21,10 @@ export interface Starship {
   url: string;
 }
 
+export interface Starship extends BaseStarship {
+  id: number;
+}
+
 export interface GetStarshipsParams {
   page?: number | null;
   search?: string | null;
@@ -32,6 +36,8 @@ export interface GetStarshipsResponse {
   previous: string | null;
   results: Starship[];
 }
+
+export type GetStarshipResponse = Starship;
 
 export type ApiRequestConfig = Partial<
   Pick<AxiosRequestConfig, "signal" | "timeout">

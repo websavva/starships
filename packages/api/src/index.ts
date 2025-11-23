@@ -6,6 +6,8 @@ import type {
   GetStarshipsParams,
   GetStarshipsResponse,
   ApiRequestConfig,
+  BaseStarship,
+  GetStarshipResponse,
 } from "./types";
 
 export * from "./types";
@@ -17,21 +19,37 @@ export class StarshipsApi {
   });
 
   async getStarships(
-    params: GetStarshipsParams = {},
-    config: ApiRequestConfig = {}
-  ) {
-    const response = await this.axios.get<GetStarshipsResponse>("/", {
+    params?: GetStarshipsParams,
+    config?: ApiRequestConfig
+  ): Promise<GetStarshipsResponse> {
+    const response = await this.axios.get<
+      Omit<GetStarshipsResponse, "results"> & { results: BaseStarship[] }
+    >("/", {
       ...config,
       params,
     });
 
-    return response.data;
+    const { results: rawStarships, ...paginationProps } = response.data;
+
+    return {
+      ...paginationProps,
+      results: rawStarships.map((rawStarship) => ({
+        ...rawStarship,
+        id: Number(rawStarship.url.split("/").filter(Boolean).pop()!),
+      })),
+    };
   }
 
-  async getStarship(id: string, config: ApiRequestConfig = {}) {
-    const response = await this.axios.get<Starship>(`/${id}`, config);
+  async getStarship(
+    id: number,
+    config?: ApiRequestConfig
+  ): Promise<GetStarshipResponse> {
+    const response = await this.axios.get<BaseStarship>(`/${id}`, config);
 
-    return response.data;
+    return {
+      id,
+      ...response.data,
+    };
   }
 }
 
