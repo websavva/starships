@@ -1,6 +1,7 @@
 const path = require("path");
 
 const { readWorkspaceManifest } = require("@pnpm/workspace.read-manifest");
+const { findWorkspaceDir } = require("@pnpm/find-workspace-dir");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
 const { container } = require("webpack");
@@ -9,16 +10,16 @@ const moduleFederationConfig = require("@starships/module-federation-config");
 
 const dotenv = require("dotenv");
 
-dotenv.config();
-
 const pkg = require("../package.json");
 
 exports.getWebpackConfig = (options) => async () => {
-  const {
-    catalog
-  } = await readWorkspaceManifest(
-    path.resolve(__dirname, "../../..")
-  );
+  const workspaceRootDir = await findWorkspaceDir(process.cwd());
+
+  dotenv.config({
+    path: path.resolve(workspaceRootDir, ".env"),
+  });
+
+  const { catalog } = await readWorkspaceManifest(workspaceRootDir);
 
   const getPackageVersion = (name) => {
     return catalog[name] || pkg.dependencies[name] || pkg.devDependencies[name];
@@ -33,7 +34,7 @@ exports.getWebpackConfig = (options) => async () => {
     remotes: Object.fromEntries(
       (options.remotes || []).map((name) => {
         const remoteUrl = isProduction
-          ? `${process.env.BASE_URL}/${name}/remoteEntry.js`
+          ? `${process.env.BASE_URL}/__mf__/${name}/remoteEntry.js`
           : `http://localhost:${moduleFederationConfig[name].devPort}/remoteEntry.js`;
         return [name, `${name}@${remoteUrl}`];
       })
@@ -110,14 +111,16 @@ exports.getWebpackConfig = (options) => async () => {
     plugins: [
       // Define federation config once and use for both plugins
       new ModuleFederationPlugin(currentFederationConfig),
-      new FederatedTypesPlugin({
-        disableDownloadingRemoteTypes:
-          options.disableDownloadingRemoteTypes || false,
-        federationConfig: currentFederationConfig,
-      }),
+      isProduction
+        ? null
+        : new FederatedTypesPlugin({
+            disableDownloadingRemoteTypes:
+              options.disableDownloadingRemoteTypes || false,
+            federationConfig: currentFederationConfig,
+          }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "../public/index.html"),
       }),
-    ],
+    ].filter(Boolean),
   };
 };

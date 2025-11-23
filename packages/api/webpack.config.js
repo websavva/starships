@@ -20,12 +20,5 @@ module.exports = getWebpackConfig({
       "browser",
       "axios.cjs"
     ),
-    // "axios-extensions": path.join(
-    //   __dirname,
-    //   "node_modules",
-    //   "axios-extensions",
-    //   "dist",
-    //   "axios-extensions.js"
-    // ),
   },
 });

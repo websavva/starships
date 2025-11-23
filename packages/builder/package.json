@@ -1,0 +1,22 @@
+{
+  "name": "@starships/builder",
+  "version": "0.0.0",
+  "private": true,
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@starships/module-federation-config": "workspace:*",
+    "@pnpm/find-workspace-dir": "1000.1.0",
+    "@pnpm/workspace.find-packages": "1000.0.23",
+    "webpack": "5.101.0",
+    "typescript": "5.5.3",
+    "fs-extra": "^11.3.2",
+    "@types/fs-extra": "^11.0.4",
+    "dotenv": "^17.2.3"
+  },
+  "dependencies": {
+    "jiti": "^2.6.1"
+  },
+  "scripts": {
+    "build": "jiti scripts/build.ts"
+  }
+}

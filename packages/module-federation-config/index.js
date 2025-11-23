@@ -7,26 +7,25 @@ const config = {
     devPort: 3001,
   },
 
-  styles: {
-    name: "styles",
+  api: {
+    name: "api",
     devPort: 3002,
   },
 
-  api: {
-    name: "api",
+  styles: {
+    name: "styles",
     devPort: 3003,
-  },
-
-  ui_components: {
-    name: "ui_components",
-    devPort: 3004,
   },
 
   hooks: {
     name: "hooks",
-    devPort: 3005,
+    devPort: 3004,
   },
 
+  ui_components: {
+    name: "ui_components",
+    devPort: 3005,
+  },
 };
 
 exports.moduleFederationConfig = config;

@@ -12,7 +12,6 @@
   },
   "scripts": {
     "dev": "webpack-cli serve --mode development",
-    "serve": "serve dist -p 3001",
     "build": "webpack --mode production",
     "clean": "rm -rf dist"
   },

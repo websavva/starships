@@ -11,9 +11,12 @@
   "pnpm": {
     "neverBuiltDependencies": []
   },
+  "devDependencies": {
+    "jiti": "^2.6.1"
+  },
   "scripts": {
     "dev": "pnpm --filter \"./{packages,apps}/**\" --parallel dev",
-    "build": "pnpm --filter \"{packages,apps}/**\" build",
+    "build": "pnpm --filter \"./packages/builder/**\" build",
     "clean": "pnpm --filter \"{packages,apps}/**\" --parallel clean"
   }
 }
