@@ -24,31 +24,33 @@ const StyledImage = styled.img<{ $isLoaded: boolean }>`
   opacity: ${({ $isLoaded }) => ($isLoaded ? 0.2 : 0)};
 `;
 
-export const BackgroundImage = ({
-  id,
-  ...props
-}: { id: number } & Omit<React.HTMLAttributes<HTMLImageElement>, "id">) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+export const BackgroundImage = styled(
+  ({
+    id,
+    ...props
+  }: { id: number } & Omit<React.HTMLAttributes<HTMLImageElement>, "id">) => {
+    const [isLoaded, setIsLoaded] = useState(false);
 
-  const imgUrl = getShipImageUrl(id);
+    const imgUrl = getShipImageUrl(id);
 
-  useEffect(() => {
-    setIsLoaded(false);
-  }, [imgUrl]);
+    useEffect(() => {
+      setIsLoaded(false);
+    }, [imgUrl]);
 
-  const onLoad = useCallback(() => {
-    setIsLoaded(true);
-  }, []);
+    const onLoad = useCallback(() => {
+      setIsLoaded(true);
+    }, []);
 
-  return (
-    <StyledImage
-      {...props}
-      src={imgUrl}
-      alt=""
-      $isLoaded={isLoaded}
-      onLoad={onLoad}
-    />
-  );
-};
+    return (
+      <StyledImage
+        {...props}
+        src={imgUrl}
+        alt=""
+        $isLoaded={isLoaded}
+        onLoad={onLoad}
+      />
+    );
+  }
+)``;
 
 export default BackgroundImage;

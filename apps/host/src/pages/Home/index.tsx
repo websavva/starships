@@ -75,8 +75,6 @@ const StarshipsSearchForm = styled(SearchForm)`
   margin: 2rem 0;
 `;
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 export const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -169,10 +167,7 @@ export const Home = () => {
               {starships.map((starship) => (
                 <li key={starship.id}>
                   <Link to={`/starships/${starship.id}`}>
-                    <StarshipItem
-                      name={starship.name}
-                      model={starship.model}
-                    />
+                    <StarshipItem name={starship.name} model={starship.model} />
                   </Link>
                 </li>
               ))}
