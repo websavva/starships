@@ -28,11 +28,11 @@ const PaginationNav = styled.nav`
 `;
 
 const PaginationButton = styled.button`
-  color: ${colors.green.toString()};
+  color: ${colors.green.lightness(40).toString()};
   border-radius: 5px;
   font-size: 1.7rem;
   padding: 0.5rem 2rem;
-  border: 1px solid ${colors.green.toString()};
+  border: 1px solid ${colors.green.lightness(40).toString()};
   font-weight: 200;
   transition: all 0.3s;
   background: transparent;

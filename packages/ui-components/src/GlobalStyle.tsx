@@ -1,15 +1,20 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 import { fonts } from "styles/fonts";
 import { breakpoints } from "styles/breakpoints";
 import { colors } from "styles/colors";
+
+import { maxWidth } from "./styles/mq";
 
 export const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%;
 
-    @media (max-width: ${breakpoints.sm}) {
-      font-size: 58%;
-    }
+    ${maxWidth(
+      "2xl",
+      css`
+        font-size: 55%;
+      `
+    )}
   }
 
   *,

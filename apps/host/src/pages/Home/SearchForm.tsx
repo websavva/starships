@@ -15,6 +15,7 @@ export interface SearchFormProps
   disabled?: boolean;
 
   onChange: (value: string) => void;
+  onClear: () => void;
 }
 
 const SearchFormContainer = styled.form`
@@ -99,6 +100,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   value,
   disabled,
   onChange,
+  onClear,
   ...props
 }) => {
   const [localValue, setLocalValue] = useState(value);
@@ -132,7 +134,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({
   };
 
   const handleClear = () => {
-    setLocalValue("");
+    onClear();
   };
 
   return (

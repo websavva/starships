@@ -1,7 +1,9 @@
 import * as React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import { colors } from "styles/colors";
+
+import { maxWidth } from "./styles/mq";
 
 const ExlamationTriangeIcon = styled((props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -48,15 +50,28 @@ export const ErrorAlert = styled(
   align-items: center;
   justify-content: center;
   font-size: 2rem;
+  text-align: center;
+
+  ${maxWidth("md", css`
+    font-size: 1.5rem;
+  `)}
 
   .exlamation-triangle-icon {
     width: 20rem;
     height: auto;
     display: block;
+
+    ${maxWidth("md", css`
+      width: 12rem;
+    `)}
   }
 
   & > * + * {
     margin-top: 2rem;
+
+    ${maxWidth("md", css`
+      margin-top: 1rem;
+    `)}
   }
 `;
 

@@ -50,6 +50,10 @@ export const StarshipItem = styled(BaseStarshipItem)`
     font-size: 1.1em;
     color: ${colors.green.lightness(30).toString()};
   }
+
+  ${maxWidth("md", css`
+    padding: 1rem;
+  `)}
 `;
 
 export default StarshipItem;

@@ -1,7 +1,8 @@
 import * as React from "react";
-import styled from "styled-components";
-import { useEffect, useMemo } from "react";
+import styled, { css } from "styled-components";
+import { useEffect } from "react";
 
+import { maxWidth } from "ui_components/styles/mq";
 import Card from "ui_components/Card";
 import Spinner from "ui_components/Spinner";
 import MessageBox from "ui_components/MessageBox";
@@ -34,7 +35,7 @@ export const ShipInfoCard = styled(({ id, ...props }: ShipInfoCardProps) => {
   }, [id, makeApiCall, cancelApiCall]);
 
   return (
-    <Card $clipHeight="50%" $clipWidth="15rem" {...props}>
+    <Card $clipHeight="var(--clip-height)" $clipWidth="var(--clip-width)" {...props}>
       {isPending || isInitial ? (
         <Spinner />
       ) : isError ? (
@@ -56,6 +57,24 @@ export const ShipInfoCard = styled(({ id, ...props }: ShipInfoCardProps) => {
   align-items: center;
   justify-content: center;
   position: relative;
+
+  --clip-width: 15rem;
+  --clip-height: 50%;
+
+  ${maxWidth("lg", css`
+    --clip-width: 8rem;
+    --clip-height: 30%;
+  `)}
+
+  ${maxWidth("sm", css`
+    --clip-width: 5rem;
+    --clip-height: 20rem;
+  `)}
+
+  ${maxWidth("xs", css`
+    --clip-width: 0;
+    --clip-height: 0;
+  `)}
 
   &::before,
   &::after {

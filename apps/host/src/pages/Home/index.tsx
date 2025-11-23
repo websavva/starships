@@ -1,8 +1,9 @@
 import * as React from "react";
 import { useEffect, useCallback, useMemo } from "react";
 import { Link, useSearchParams } from "react-router";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
+import { maxWidth } from "ui_components/styles/mq";
 import { Logo } from "ui_components/Logo";
 import StarshipItem from "ui_components/StarshipItem";
 import Card from "ui_components/Card";
@@ -27,6 +28,7 @@ const StarshipsList = styled.ul`
   display: flex;
   flex-direction: column;
   overflow: auto;
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     appearance: none;
@@ -35,6 +37,15 @@ const StarshipsList = styled.ul`
   & > * + * {
     margin-top: 1.5rem;
   }
+
+  ${maxWidth(
+    "md",
+    css`
+      & > * + * {
+        margin-top: 1rem;
+      }
+    `
+  )}
 `;
 
 const StarshipsListContainer = styled.div`
@@ -46,7 +57,7 @@ const StarshipsListContainer = styled.div`
 const HomeContainer = styled.section`
   max-width: 70rem;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 2rem;
 `;
 
 const StarshipsListCard = styled(Card)`
@@ -54,6 +65,16 @@ const StarshipsListCard = styled(Card)`
   min-height: 30rem;
   height: calc(100vh - 25rem);
   overflow: hidden;
+
+  --clip-width: 10rem;
+
+  ${maxWidth(
+    "md",
+    css`
+      padding: 1.5rem 1rem;
+      --clip-width: 5rem;
+    `
+  )}
 `;
 
 const StarshipsLogo = styled(Logo)`
@@ -144,17 +165,22 @@ export const Home = () => {
     [setSearchParams]
   );
 
+  const onClearSearch = useCallback(() => {
+    onSearchChange("");
+  }, [onSearchChange]);
+
   return (
     <HomeContainer>
       <StarshipsLogo />
 
       <StarshipsSearchForm
         value={search}
+        onClear={onClearSearch}
         onChange={onSearchChange}
         disabled={isPending || isInitial}
       />
 
-      <StarshipsListCard $clipHeight="35%" $clipWidth="13%">
+      <StarshipsListCard $clipHeight="35%" $clipWidth="var(--clip-width)">
         {isPending || isInitial ? (
           <StarshipsSpinnerContainer>
             <Spinner />

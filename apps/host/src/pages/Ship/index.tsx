@@ -1,9 +1,11 @@
 import * as React from "react";
 import { useParams, useNavigate } from "react-router";
 import { useEffect } from "react";
+import styled, { css } from "styled-components";
+
+import { maxWidth } from "ui_components/styles/mq";
 
 import ShipInfoCard from "@/components/ShipInfoCard";
-import styled from "styled-components";
 
 const idRegex = /^\d+$/;
 
@@ -39,6 +41,16 @@ export const Ship = styled((props: React.HTMLAttributes<HTMLDivElement>) => {
     width: 80%;
     min-height: 50rem;
     padding: 5rem 2rem;
+
+    ${maxWidth("lg", css`
+      width: 100%;
+      margin: 2rem;
+      padding: 2rem 1rem;
+    `)}
+
+    ${maxWidth("sm", css`
+      margin: 2rem 1rem;
+    `)}
   }
 `;
 

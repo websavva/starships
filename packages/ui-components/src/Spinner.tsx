@@ -1,7 +1,9 @@
 import * as React from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 
 import { colors } from "styles/colors";
+
+import { maxWidth } from "./styles/mq";
 
 const spin = keyframes`
   from {
