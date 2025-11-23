@@ -1,4 +1,5 @@
 import type { Starship } from "api";
+import { upperFirst } from "utils/upper-first";
 
 export type FormattedStarship = {
   [Key in keyof Starship]: {
@@ -15,10 +16,6 @@ export type FormattedStarship = {
 const STATIC_LABELS = {
   cost_in_credits: "Cost",
   hyperdrive_rating: "Rating",
-};
-
-const uppercaseFirstLetter = (word: string) => {
-  return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
 const NUMBER_SCALES = [
@@ -94,7 +91,7 @@ const formatValue = (name: string, value: string) => {
 
     return value.map((url, index) => {
       return {
-        label: `${uppercaseFirstLetter(singularName)} ${index + 1}`,
+        label: `${upperFirst(singularName)} ${index + 1}`,
         value: url,
       };
     });

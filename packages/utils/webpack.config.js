@@ -9,8 +9,8 @@ module.exports = getWebpackConfig({
   dir: __dirname,
   devPort: moduleFederationConfig.utils.devPort,
   exposes: {
-    "./index": "./src/index",
     "./debounce": "./src/debounce",
     "./search-params": "./src/search-params",
+    "./upper-first": "./src/upper-first",
   },
 });

@@ -7,7 +7,7 @@ import Spinner from "ui_components/Spinner";
 import MessageBox from "ui_components/MessageBox";
 import { useApi } from "hooks/use-api";
 
-import ShipInforCardContent from "./Content";
+import Info from "./Info";
 import BackgroundImage from "./BackgroundImage";
 
 export interface ShipInfoCardProps
@@ -43,7 +43,7 @@ export const ShipInfoCard = styled(({ id, ...props }: ShipInfoCardProps) => {
         <>
           <BackgroundImage id={starship.id} />
 
-          <ShipInforCardContent starship={starship} />
+          <Info starship={starship} />
         </>
       ) : (
         <MessageBox>No starship found</MessageBox>
@@ -64,9 +64,10 @@ export const ShipInfoCard = styled(({ id, ...props }: ShipInfoCardProps) => {
 
   ${BackgroundImage} {
     z-index: 1;
+    border-radius: inherit;
   }
 
-  ${ShipInforCardContent} {
+  ${Info} {
     align-self: stretch;
     position: relative;
     z-index: 3;

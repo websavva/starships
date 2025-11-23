@@ -26,7 +26,7 @@ const BackgroundImage = styled(
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: .2;
+  opacity: 0.2;
 `;
 
 export default BackgroundImage;
