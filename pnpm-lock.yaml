@@ -6,6 +6,12 @@ settings:
 
 catalogs:
   default:
+    '@types/react':
+      specifier: 19.2.6
+      version: 19.2.6
+    '@types/react-dom':
+      specifier: 19.2.3
+      version: 19.2.3
     react:
       specifier: 19.2.0
       version: 19.2.0
@@ -51,10 +57,10 @@ importers:
         specifier: workspace:*
         version: link:../../packages/webpack
       '@types/react':
-        specifier: 19.2.6
+        specifier: 'catalog:'
         version: 19.2.6
       '@types/react-dom':
-        specifier: 19.2.3
+        specifier: 'catalog:'
         version: 19.2.3(@types/react@19.2.6)
 
   packages/api:
@@ -89,7 +95,7 @@ importers:
         specifier: workspace:*
         version: link:../webpack
       '@types/react':
-        specifier: 19.2.6
+        specifier: 'catalog:'
         version: 19.2.6
 
   packages/module-federation-config: {}
@@ -122,10 +128,10 @@ importers:
         specifier: workspace:*
         version: link:../webpack
       '@types/react':
-        specifier: 19.2.6
+        specifier: 'catalog:'
         version: 19.2.6
       '@types/react-dom':
-        specifier: 19.2.3
+        specifier: 'catalog:'
         version: 19.2.3(@types/react@19.2.6)
       serve:
         specifier: 14.2.3

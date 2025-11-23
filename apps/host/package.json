@@ -5,10 +5,10 @@
   "devDependencies": {
     "@babel/preset-react": "7.24.7",
     "@babel/preset-typescript": "7.24.7",
-    "@types/react": "19.2.6",
-    "@types/react-dom": "19.2.3",
     "@starships/webpack": "workspace:*",
-    "@starships/module-federation-config": "workspace:*"
+    "@starships/module-federation-config": "workspace:*",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:"
   },
   "scripts": {
     "dev": "webpack-cli serve --mode development",
