@@ -11,7 +11,6 @@ module.exports = getWebpackConfig({
   dir: __dirname,
   devPort: moduleFederationConfig.hooks.devPort,
   exposes: {
-    "./index": "./src/index",
     "./use-api": "./src/use-api",
   },
 });

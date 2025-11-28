@@ -78,3 +78,6 @@ export class HSlAColor {
 export const createColor = (props: HSlAColorProps) => {
   return new HSlAColor(props);
 };
+
+
+export default createColor;

@@ -1,5 +1,4 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios";
-// import { cacheAdapterEnhancer } from "axios-extensions";
 
 import type {
   Starship,
@@ -15,7 +14,6 @@ export * from "./types";
 export class StarshipsApi {
   private axios: AxiosInstance = axios.create({
     baseURL: "https://swapi.dev/api/starships",
-    // adapter: cacheAdapterEnhancer(axios.defaults.adapter as AxiosAdapter),
   });
 
   async getStarships(
@@ -54,3 +52,5 @@ export class StarshipsApi {
 }
 
 export const starshipsApi = new StarshipsApi();
+
+export default starshipsApi;

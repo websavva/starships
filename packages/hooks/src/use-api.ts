@@ -188,7 +188,6 @@ export const useApi = <
         };
       }
 
-
       try {
         const responseData = (await starshipsApi[method](
           // @ts-expect-error - we know that the args are correct

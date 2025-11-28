@@ -1,0 +1,49 @@
+name: CD
+
+on:
+  release:
+    types: ['released']
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare workflow
+        uses: ./.github/actions/prepare-workflow
+
+      - name: Run build
+        run: pnpm run build
+        env:
+          APP_BASE_URL: ${{ vars.APP_BASE_URL }}
+          STAGE: production
+
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
+  deploy:
+    needs: build
+    name: Deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_PAGES_TOKEN }}

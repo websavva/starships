@@ -2,6 +2,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "strict": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "*": ["./@mf-types/*"]

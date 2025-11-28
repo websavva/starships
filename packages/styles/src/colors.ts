@@ -8,3 +8,5 @@ export const colors = {
   danger: createColor({ h: 0, s: 83, l: 53 }),
   bgPrimary: createColor({ h: 0, s: 0, l: 0 }),
 };
+
+export default colors;

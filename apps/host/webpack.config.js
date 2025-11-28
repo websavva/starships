@@ -18,4 +18,8 @@ module.exports = getWebpackConfig({
   aliases: {
     "@": path.resolve(__dirname, "src"),
   },
+  htmlTemplatePath: path.resolve(__dirname, "index.html"),
+  publicDirs: [
+    path.resolve(__dirname, "public"),
+  ],
 });

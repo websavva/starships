@@ -9,7 +9,6 @@ module.exports = getWebpackConfig({
   dir: __dirname,
   devPort: moduleFederationConfig.styles.devPort,
   exposes: {
-    "./index": "./src/index",
     "./colors": "./src/colors",
     "./breakpoints": "./src/breakpoints",
     "./fonts": "./src/fonts",

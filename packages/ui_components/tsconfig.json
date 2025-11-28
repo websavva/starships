@@ -2,11 +2,13 @@
   "compilerOptions": {
     "sourceMap": true,
     "strict": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "*": ["./@mf-types/*"]
     },
     "jsx": "react-jsx"
   },
-  "include": ["src/**/*", "dev/**/*"]
+  "include": ["src/**/*", "dev/**/*"],
+  "exclude": ["node_modules/**"]
 }

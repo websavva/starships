@@ -1,0 +1,41 @@
+name: CI
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+jobs:
+  # lint:
+  #   name: Run linter
+  #   runs-on: ubuntu-latest
+  #   timeout-minutes: 5
+  #   steps:
+  #     - uses: actions/checkout@v4
+
+  #     - name: Prepare workflow
+  #       uses: ./.github/actions/prepare-workflow
+
+  #     - name: Run linter
+  #       run: pnpm lint
+
+  typecheck:
+    name: Run typecheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare workflow
+        uses: ./.github/actions/prepare-workflow
+
+      - name: Run typecheck
+        run: pnpm run typecheck

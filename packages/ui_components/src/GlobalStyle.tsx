@@ -1,6 +1,5 @@
 import { createGlobalStyle, css } from "styled-components";
 import { fonts } from "styles/fonts";
-import { breakpoints } from "styles/breakpoints";
 import { colors } from "styles/colors";
 
 import { maxWidth } from "./styles/mq";
@@ -15,6 +14,10 @@ export const GlobalStyle = createGlobalStyle`
         font-size: 55%;
       `
     )}
+
+    ${maxWidth('md', css`
+      font-size: 60%;
+    `)}
   }
 
   *,

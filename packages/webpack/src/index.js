@@ -4,9 +4,10 @@ const { readWorkspaceManifest } = require("@pnpm/workspace.read-manifest");
 const { findWorkspaceDir } = require("@pnpm/find-workspace-dir");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { FederatedTypesPlugin } = require("@module-federation/typescript");
-const { container } = require("webpack");
+const { container, DefinePlugin } = require("webpack");
 const { ModuleFederationPlugin } = container;
 const moduleFederationConfig = require("@starships/module-federation-config");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const dotenv = require("dotenv");
 
@@ -25,7 +26,13 @@ exports.getWebpackConfig = (options) => async () => {
     return catalog[name] || pkg.dependencies[name] || pkg.devDependencies[name];
   };
 
-  const isProduction = process.env.NODE_ENV === "production";
+
+  process.env.STAGE = process.env.STAGE || "production";
+
+  const isProduction = process.env.STAGE === "production";
+  const isDevelopment = process.env.STAGE === "development";
+
+  const mode = isProduction ? "production" : "development";
 
   const currentFederationConfig = {
     name: options.name,
@@ -33,8 +40,8 @@ exports.getWebpackConfig = (options) => async () => {
     exposes: options.exposes || {},
     remotes: Object.fromEntries(
       (options.remotes || []).map((name) => {
-        const remoteUrl = isProduction
-          ? `${process.env.BASE_URL}/__mf__/${name}/remoteEntry.js`
+        const remoteUrl = !isDevelopment
+          ? `${process.env.APP_BASE_URL}/__mf__/${name}/remoteEntry.js`
           : `http://localhost:${moduleFederationConfig[name].devPort}/remoteEntry.js`;
         return [name, `${name}@${remoteUrl}`];
       })
@@ -65,8 +72,8 @@ exports.getWebpackConfig = (options) => async () => {
 
   return {
     entry: options.entry || "./src/index",
-    mode: process.env.NODE_ENV || "production",
-
+    mode,
+    devtool: isProduction ? false : "eval-source-map",
     devServer: {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -109,17 +116,27 @@ exports.getWebpackConfig = (options) => async () => {
       ],
     },
     plugins: [
+      new DefinePlugin({
+        "process.env.APP_BASE_URL": JSON.stringify(
+          process.env.APP_BASE_URL || "http://localhost:3000"
+        ),
+      }),
+      options.publicDirs?.length
+        ? new CopyWebpackPlugin({
+            patterns: options.publicDirs,
+          })
+        : null,
+
       // Define federation config once and use for both plugins
       new ModuleFederationPlugin(currentFederationConfig),
       isProduction
         ? null
         : new FederatedTypesPlugin({
-            disableDownloadingRemoteTypes:
-              options.disableDownloadingRemoteTypes || false,
             federationConfig: currentFederationConfig,
           }),
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "../public/index.html"),
+        template:
+          options.htmlTemplatePath || path.resolve(__dirname, "../index.html"),
       }),
     ].filter(Boolean),
   };

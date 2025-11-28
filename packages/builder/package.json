@@ -3,20 +3,22 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "@types/react": "catalog:",
+    "typescript": "5.5.3",
+    "@types/fs-extra": "^11.0.4",
+    "@types/serve-handler": "^6.1.4"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
     "@starships/module-federation-config": "workspace:*",
     "@pnpm/find-workspace-dir": "1000.1.0",
     "@pnpm/workspace.find-packages": "1000.0.23",
-    "webpack": "5.101.0",
-    "typescript": "5.5.3",
     "fs-extra": "^11.3.2",
-    "@types/fs-extra": "^11.0.4",
-    "dotenv": "^17.2.3"
-  },
-  "dependencies": {
-    "jiti": "^2.6.1"
+    "jiti": "^2.6.1",
+    "serve-handler": "^6.1.6",
+    "execa": "^9.6.0"
   },
   "scripts": {
-    "build": "jiti scripts/build.ts"
+    "build": "jiti scripts/build.ts",
+    "typecheck": "tsc --noEmit"
   }
 }

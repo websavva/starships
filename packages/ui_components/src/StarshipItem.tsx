@@ -52,7 +52,7 @@ export const StarshipItem = styled(BaseStarshipItem)`
   }
 
   ${maxWidth("md", css`
-    padding: 1rem;
+    padding: 1rem 1.5rem;
   `)}
 `;
 

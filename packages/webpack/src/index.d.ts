@@ -6,10 +6,11 @@ export interface WebpackConfigOptions {
   remotes?: string[];
   dir?: string;
   tsx?: boolean;
-  disableDownloadingRemoteTypes?: boolean;
   devPort?: number;
   exposes?: Record<string, string>;
   aliases?: Record<string, string>;
+  htmlTemplatePath?: string;
+  publicDirs?: string[];
 }
 
 export function getWebpackConfig(options: WebpackConfigOptions): Configuration;

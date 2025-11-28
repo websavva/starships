@@ -14,3 +14,5 @@ export const breakpoints = {
   // 1900px
   "2xl": "118.75em",
 };
+
+export default breakpoints;

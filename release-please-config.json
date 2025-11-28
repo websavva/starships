@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootsrap-sha": "b5bbccffed7186a6f74426b172feaff0988363c2",
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "starships",
+      "extra-files": [
+        "packages/api/package.json",
+        "packages/hooks/package.json",
+        "packages/utils/package.json",
+        "packages/styles/package.json",
+        "packages/ui_components/package.json",
+        "packages/webpack/package.json",
+        "packages/module-federation-config/package.json",
+        "apps/host/package.json"
+      ]
+    }
+  }
+}
