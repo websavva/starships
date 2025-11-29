@@ -1,6 +1,6 @@
 {
   "name": "@starships/ui_components",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "devDependencies": {
     "@types/react": "catalog:",

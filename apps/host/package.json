@@ -1,6 +1,6 @@
 {
   "name": "@starships/host",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "devDependencies": {
     "@babel/preset-react": "7.24.7",

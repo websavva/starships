@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.2](https://github.com/websavva/starships/compare/starships-v1.0.1...starships-v1.0.2) (2025-11-29)
+
+
+### Bug Fixes
+
+* **cd:** Github pages token was renamed ([d93d660](https://github.com/websavva/starships/commit/d93d6605f38b2ac0b20e0b3bf7d885874c730553))
+* **cd:** Missing APP_BASE_URL env was added for types preparation ([22db158](https://github.com/websavva/starships/commit/22db158487c876271f5fd4b9d9508ca4fcdeed15))
+* **ci:** Typecheck is run after types are generated ([999aad7](https://github.com/websavva/starships/commit/999aad7c2b2428e1775f33fc41888f1cd7d9ef07))
+
 ## [1.0.1](https://github.com/websavva/starships/compare/starships-v1.0.0...starships-v1.0.1) (2025-11-29)
 
 
