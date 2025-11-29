@@ -70,6 +70,12 @@ exports.getWebpackConfig = (options) => async () => {
       : [],
   };
 
+  let {
+    pathname: publicPath,
+  } = new URL(process.env.APP_BASE_URL || 'http://localhost:3000');
+
+  publicPath = publicPath.replace(/\/$/, '') || '/';
+
   return {
     entry: options.entry || "./src/index",
     mode,
@@ -89,7 +95,7 @@ exports.getWebpackConfig = (options) => async () => {
       port: options.devPort,
     },
     output: {
-      publicPath: "auto",
+      publicPath,
     },
     resolve: {
       extensions: [".ts", options.tsx ? ".tsx" : null, ".js"].filter(Boolean),
