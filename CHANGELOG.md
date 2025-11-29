@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/websavva/starships/compare/starships-v2.0.0...starships-v2.0.1) (2025-11-29)
+
+
+### Bug Fixes
+
+* **router:** Basename was removed as Hash router is used ([e047e63](https://github.com/websavva/starships/commit/e047e63d6a23feb64347e8d6fa94970e7a8bb3bc))
+
 ## [2.0.0](https://github.com/websavva/starships/compare/starships-v1.0.5...starships-v2.0.0) (2025-11-29)
 
 
