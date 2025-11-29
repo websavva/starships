@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/websavva/starships/compare/starships-v1.0.3...starships-v1.0.4) (2025-11-29)
+
+
+### Bug Fixes
+
+* **cd:** Public path was set correctly ([2b5742c](https://github.com/websavva/starships/commit/2b5742c206a8ec1c2be7e4faeae4dea633f28934))
+
 ## [1.0.3](https://github.com/websavva/starships/compare/starships-v1.0.2...starships-v1.0.3) (2025-11-29)
 
 
