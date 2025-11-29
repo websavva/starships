@@ -1,5 +1,23 @@
 # Changelog
 
+## [4.0.0](https://github.com/websavva/starships/compare/starships-v3.0.0...starships-v4.0.0) (2025-11-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* Pages were moved into separate packages
+
+### Features
+
+* Pages were moved into separate packages ([c1d6d4c](https://github.com/websavva/starships/commit/c1d6d4c926a26c7125700110b24ffb3f6b04d94f))
+* README.md was created ([306470c](https://github.com/websavva/starships/commit/306470c9674a1bc7ee16e68209b60ccb676f4dff))
+
+
+### Bug Fixes
+
+* Image loading handles cached images ([e9f8bdf](https://github.com/websavva/starships/commit/e9f8bdf22f5fa5ea721ea0d23cb45e06ce2af80a))
+* **styles:** Global styles were adjusted for mobile devices ([81bb3d1](https://github.com/websavva/starships/commit/81bb3d116f67d80ee30a5a0a4dc01d496de92976))
+
 ## [3.0.0](https://github.com/websavva/starships/compare/starships-v2.1.0...starships-v3.0.0) (2025-11-29)
 
 
