@@ -37,5 +37,8 @@ jobs:
       - name: Prepare workflow
         uses: ./.github/actions/prepare-workflow
 
+      - name: Prepare types
+        run: pnpm run dev:prepare
+
       - name: Run typecheck
         run: pnpm run typecheck
