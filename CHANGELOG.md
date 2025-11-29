@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/websavva/starships/compare/starships-v2.0.1...starships-v2.1.0) (2025-11-29)
+
+
+### Features
+
+* **head:** Meta tags were added ([16701d7](https://github.com/websavva/starships/commit/16701d76b4c34460c35f68ab64f08b69d89d5464))
+
 ## [2.0.1](https://github.com/websavva/starships/compare/starships-v2.0.0...starships-v2.0.1) (2025-11-29)
 
 
