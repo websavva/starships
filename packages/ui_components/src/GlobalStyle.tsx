@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     )}
 
     ${maxWidth('md', css`
-      font-size: 60%;
+      font-size: 58%;
     `)}
   }
 
@@ -39,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.5rem;
     width: 100%;
-    min-height: 100vh;
+    min-height: 100dvh;
     font-weight: 300;
     font-family: ${fonts.primary.toString()};
     color: ${colors.primary.toString()};

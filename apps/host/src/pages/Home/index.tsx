@@ -63,7 +63,7 @@ const HomeContainer = styled.section`
 const StarshipsListCard = styled(Card)`
   padding: 1.5rem 2rem;
   min-height: 30rem;
-  height: calc(100vh - 25rem);
+  height: calc(100dvh - 25rem);
   overflow: hidden;
 
   --clip-width: 10rem;
