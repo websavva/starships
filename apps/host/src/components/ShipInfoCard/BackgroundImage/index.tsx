@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 
 // @ts-expect-error - Missing webpack types
 const shipImagesCtx = require.context('./images', false, /\.jpg$/);
@@ -30,11 +30,22 @@ export const BackgroundImage = styled(
     ...props
   }: { id: number } & Omit<React.HTMLAttributes<HTMLImageElement>, 'id'>) => {
     const [isLoaded, setIsLoaded] = useState(false);
+    const imageRef = useRef<HTMLImageElement | null>(null);
 
     const imgUrl = getShipImageUrl(id);
 
     useEffect(() => {
-      setIsLoaded(false);
+      // Reset loaded state when image URL changes
+      // But if image is already loaded (cached), keep it loaded
+      const img = imageRef.current;
+
+      if (img?.complete && img.src === imgUrl) {
+        // Image is already loaded (cached), set loaded immediately
+        setIsLoaded(true);
+      } else {
+        // Image needs to load, reset to false
+        setIsLoaded(false);
+      }
     }, [imgUrl]);
 
     const onLoad = useCallback(() => {
@@ -43,6 +54,7 @@ export const BackgroundImage = styled(
 
     return (
       <StyledImage
+        ref={imageRef}
         {...props}
         src={imgUrl}
         alt=""
