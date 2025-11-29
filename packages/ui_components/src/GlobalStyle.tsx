@@ -7,6 +7,7 @@ import { maxWidth } from './styles/mq';
 export const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%;
+    background: ${colors.bgPrimary.toString()};
 
     ${maxWidth(
       '2xl',
@@ -16,9 +17,9 @@ export const GlobalStyle = createGlobalStyle`
     )}
 
     ${maxWidth(
-      'md',
+      'sm',
       css`
-        font-size: 58%;
+        font-size: 50%;
       `,
     )}
   }
