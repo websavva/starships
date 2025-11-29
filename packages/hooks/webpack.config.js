@@ -2,7 +2,7 @@ const { getWebpackConfig } = require("@starships/webpack");
 const moduleFederationConfig = require("@starships/module-federation-config");
 
 module.exports = getWebpackConfig({
-  entry: "./src/index.ts",
+  entry: "./dev/index.ts",
   name: moduleFederationConfig.hooks.name,
   remotes: [
     moduleFederationConfig.api.name,

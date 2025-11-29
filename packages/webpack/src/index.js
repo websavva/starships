@@ -20,19 +20,29 @@ exports.getWebpackConfig = (options) => async () => {
     path: path.resolve(workspaceRootDir, ".env"),
   });
 
+  process.env.APP_BASE_URL ||= "http://localhost:3000";
+  process.env.STAGE = process.env.STAGE || "production";
+
   const { catalog } = await readWorkspaceManifest(workspaceRootDir);
 
   const getPackageVersion = (name) => {
     return catalog[name] || pkg.dependencies[name] || pkg.devDependencies[name];
   };
 
-
-  process.env.STAGE = process.env.STAGE || "production";
-
   const isProduction = process.env.STAGE === "production";
   const isDevelopment = process.env.STAGE === "development";
 
   const mode = isProduction ? "production" : "development";
+
+  const getRemoteUrl = (name) => {
+    if (name === "host") {
+      return process.env.APP_BASE_URL;
+    }
+
+    return !isDevelopment
+      ? `${process.env.APP_BASE_URL}/__mf__/${name}`
+      : `http://localhost:${moduleFederationConfig[name].devPort}`;
+  };
 
   const currentFederationConfig = {
     name: options.name,
@@ -40,10 +50,9 @@ exports.getWebpackConfig = (options) => async () => {
     exposes: options.exposes || {},
     remotes: Object.fromEntries(
       (options.remotes || []).map((name) => {
-        const remoteUrl = !isDevelopment
-          ? `${process.env.APP_BASE_URL}/__mf__/${name}/remoteEntry.js`
-          : `http://localhost:${moduleFederationConfig[name].devPort}/remoteEntry.js`;
-        return [name, `${name}@${remoteUrl}`];
+        const remoteUrl = getRemoteUrl(name);
+
+        return [name, `${name}@${remoteUrl}/remoteEntry.js`];
       })
     ),
     shared: options.tsx
@@ -70,16 +79,14 @@ exports.getWebpackConfig = (options) => async () => {
       : [],
   };
 
-  let {
-    pathname: publicPath,
-  } = new URL(process.env.APP_BASE_URL || 'http://localhost:3000');
+  let { pathname: publicPath } = new URL(getRemoteUrl(options.name));
 
-  publicPath = publicPath.replace(/\/$/, '') || '/';
+  publicPath = publicPath === "/" ? "auto" : publicPath;
 
   return {
     entry: options.entry || "./src/index",
     mode,
-    devtool: isProduction ? false : "eval-source-map",
+    // devtool: isProduction ? false : "eval-source-map",
     devServer: {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -123,9 +130,7 @@ exports.getWebpackConfig = (options) => async () => {
     },
     plugins: [
       new DefinePlugin({
-        "process.env.APP_BASE_URL": JSON.stringify(
-          process.env.APP_BASE_URL || "http://localhost:3000"
-        ),
+        "process.env.APP_BASE_URL": JSON.stringify(process.env.APP_BASE_URL),
       }),
       options.publicDirs?.length
         ? new CopyWebpackPlugin({
