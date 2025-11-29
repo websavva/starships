@@ -1,18 +1,20 @@
-import * as React from "react";
-import styled, { css } from "styled-components";
-import { useEffect } from "react";
+import * as React from 'react';
+import styled, { css } from 'styled-components';
+import { useEffect } from 'react';
 
-import { maxWidth } from "ui_components/styles/mq";
-import Card from "ui_components/Card";
-import Spinner from "ui_components/Spinner";
-import MessageBox from "ui_components/MessageBox";
-import { useApi } from "hooks/use-api";
+import { maxWidth } from 'ui_components/styles/mq';
+import Card from 'ui_components/Card';
+import Spinner from 'ui_components/Spinner';
+import MessageBox from 'ui_components/MessageBox';
+import { useApi } from 'hooks/use-api';
 
-import Info from "./Info";
-import BackgroundImage from "./BackgroundImage";
+import Info from './Info';
+import BackgroundImage from './BackgroundImage';
 
-export interface ShipInfoCardProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "id"> {
+export interface ShipInfoCardProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'id'
+> {
   id: number;
 }
 
@@ -24,7 +26,7 @@ export const ShipInfoCard = styled(({ id, ...props }: ShipInfoCardProps) => {
     makeApiCall,
     isInitial,
     cancelApiCall,
-  } = useApi("getStarship");
+  } = useApi('getStarship');
 
   useEffect(() => {
     makeApiCall(id);
@@ -35,7 +37,11 @@ export const ShipInfoCard = styled(({ id, ...props }: ShipInfoCardProps) => {
   }, [id, makeApiCall, cancelApiCall]);
 
   return (
-    <Card $clipHeight="var(--clip-height)" $clipWidth="var(--clip-width)" {...props}>
+    <Card
+      $clipHeight="var(--clip-height)"
+      $clipWidth="var(--clip-width)"
+      {...props}
+    >
       {isPending || isInitial ? (
         <Spinner />
       ) : isError ? (
@@ -61,20 +67,29 @@ export const ShipInfoCard = styled(({ id, ...props }: ShipInfoCardProps) => {
   --clip-width: 15rem;
   --clip-height: 50%;
 
-  ${maxWidth("lg", css`
-    --clip-width: 8rem;
-    --clip-height: 30%;
-  `)}
+  ${maxWidth(
+    'lg',
+    css`
+      --clip-width: 8rem;
+      --clip-height: 30%;
+    `,
+  )}
 
-  ${maxWidth("sm", css`
-    --clip-width: 5rem;
-    --clip-height: 20rem;
-  `)}
+  ${maxWidth(
+    'sm',
+    css`
+      --clip-width: 5rem;
+      --clip-height: 20rem;
+    `,
+  )}
 
-  ${maxWidth("xs", css`
-    --clip-width: 0;
-    --clip-height: 0;
-  `)}
+  ${maxWidth(
+    'xs',
+    css`
+      --clip-width: 0;
+      --clip-height: 0;
+    `,
+  )}
 
   &::before,
   &::after {

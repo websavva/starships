@@ -1,12 +1,11 @@
-import * as React from "react";
-import styled, { css } from "styled-components";
+import * as React from 'react';
+import styled, { css } from 'styled-components';
 
-import { colors } from "styles/colors";
+import { colors } from 'styles/colors';
 
-import { maxWidth } from "./styles/mq";
+import { maxWidth } from './styles/mq';
 
-export interface StarshipItemProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+export interface StarshipItemProps extends React.HTMLAttributes<HTMLDivElement> {
   name: string;
   model: string;
 }
@@ -31,13 +30,13 @@ export const StarshipItem = styled(BaseStarshipItem)`
   border: 2px solid ${colors.green.alpha(20).toString()};
   animation: fadeIn 0.5s ease-in;
   transition: all 0.4s;
-  padding: 1.5rem .5rem;
+  padding: 1.5rem 0.5rem;
 
   ${maxWidth(
-    "xs",
+    'xs',
     css`
       clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
-    `
+    `,
   )}
 
   &:hover {
@@ -51,9 +50,12 @@ export const StarshipItem = styled(BaseStarshipItem)`
     color: ${colors.green.lightness(30).toString()};
   }
 
-  ${maxWidth("md", css`
-    padding: 1rem 1.5rem;
-  `)}
+  ${maxWidth(
+    'md',
+    css`
+      padding: 1rem 1.5rem;
+    `,
+  )}
 `;
 
 export default StarshipItem;

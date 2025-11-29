@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { colors } from "styles/colors";
+import { colors } from 'styles/colors';
 
 export const Card = styled.div<{ $clipHeight: string; $clipWidth: string }>`
   position: relative;
@@ -12,7 +12,7 @@ export const Card = styled.div<{ $clipHeight: string; $clipWidth: string }>`
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     clip-path: polygon(20% 23%, 20% 69%, 0 100%, 0 0);
     background-color: ${colors.bgPrimary.toString()};

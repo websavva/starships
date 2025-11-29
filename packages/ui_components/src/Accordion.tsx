@@ -1,10 +1,12 @@
-import * as React from "react";
-import { useState, useRef, useEffect } from "react";
+import * as React from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export interface AccordionProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onClick" | "onToggle"> {
+export interface AccordionProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'onClick' | 'onToggle'
+> {
   defaultOpened?: boolean;
   onToggle?: (isOpened: boolean) => void;
   head: React.ReactNode;
@@ -26,13 +28,13 @@ const AccordionHeading = styled.span<{ $isOpened: boolean }>`
   text-transform: capitalize;
 
   &::after {
-    content: "\\276F";
+    content: '\\276F';
     margin-left: 1rem;
     display: inline-block;
     font-weight: 500;
     transition: all 0.3s ease-in;
     transform: ${({ $isOpened }) =>
-      $isOpened ? "rotate(90deg)" : "rotate(0deg)"};
+      $isOpened ? 'rotate(90deg)' : 'rotate(0deg)'};
     opacity: ${({ $isOpened }) => ($isOpened ? 0.7 : 1)};
   }
 `;
@@ -52,7 +54,7 @@ export const Accordion: React.FC<AccordionProps> = ({
 }) => {
   const [isOpened, setIsOpened] = useState(defaultOpened);
   const bodyRef = useRef<HTMLElement>(null);
-  const [height, setHeight] = useState<string>("0px");
+  const [height, setHeight] = useState<string>('0px');
 
   useEffect(() => {
     if (bodyRef.current) {
@@ -64,7 +66,7 @@ export const Accordion: React.FC<AccordionProps> = ({
           }
         });
       } else {
-        setHeight("0px");
+        setHeight('0px');
       }
     }
   }, [isOpened]);

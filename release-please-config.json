@@ -13,7 +13,10 @@
         "packages/ui_components/package.json",
         "packages/webpack/package.json",
         "packages/module-federation-config/package.json",
-        "apps/host/package.json"
+        "apps/host/package.json",
+        "packages/builder/package.json",
+        "packages/eslint-config/package.json",
+        "packages/tsconfig/package.json"
       ]
     }
   }

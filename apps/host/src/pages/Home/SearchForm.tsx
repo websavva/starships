@@ -1,15 +1,17 @@
-import * as React from "react";
-import styled, { css } from "styled-components";
-import { useState, useEffect, useCallback } from "react";
+import * as React from 'react';
+import styled, { css } from 'styled-components';
+import { useState, useEffect, useCallback } from 'react';
 
-import { colors } from "styles/colors";
-import { maxWidth } from "ui_components/styles/mq";
-import Card from "ui_components/Card";
+import { colors } from 'styles/colors';
+import { maxWidth } from 'ui_components/styles/mq';
+import Card from 'ui_components/Card';
 
-import { debounce } from "utils/debounce";
+import { debounce } from 'utils/debounce';
 
-export interface SearchFormProps
-  extends Omit<React.HTMLAttributes<HTMLFormElement>, "onChange" | "onSubmit"> {
+export interface SearchFormProps extends Omit<
+  React.HTMLAttributes<HTMLFormElement>,
+  'onChange' | 'onSubmit'
+> {
   value: string;
 
   disabled?: boolean;
@@ -26,10 +28,10 @@ const SearchFormContainer = styled.form`
   position: relative;
 
   ${maxWidth(
-    "sm",
+    'sm',
     css`
       gap: 1rem;
-    `
+    `,
   )}
 `;
 
@@ -50,10 +52,10 @@ const SearchInput = styled.input`
     font-size: 1.1em;
 
     ${maxWidth(
-      "sm",
+      'sm',
       css`
         font-size: 0.9em;
-      `
+      `,
     )}
   }
 
@@ -63,16 +65,16 @@ const SearchInput = styled.input`
   }
 
   ${maxWidth(
-    "sm",
+    'sm',
     css`
       font-size: 1.6rem;
-    `
+    `,
   )}
 `;
 
 const ClearButton = styled.button`
   border-radius: 5px;
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   filter: brightness(160%);
   background: ${colors.secondary.toString()};
   font-size: 1.7rem;
@@ -83,11 +85,11 @@ const ClearButton = styled.button`
   color: inherit;
 
   ${maxWidth(
-    "sm",
+    'sm',
     css`
       padding: 0.5rem;
       font-size: 1.3rem;
-    `
+    `,
   )}
 
   &:disabled {

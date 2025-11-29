@@ -1,17 +1,17 @@
-import { useReducer, useRef, useCallback } from "react";
+import { useReducer, useRef, useCallback } from 'react';
 
-import { StarshipsApi, starshipsApi, type ApiRequestConfig } from "api/index";
+import { StarshipsApi, starshipsApi, type ApiRequestConfig } from 'api/index';
 
 export enum UseApiStatus {
-  Pending = "pending",
-  Error = "error",
-  Success = "success",
-  Initial = "initial",
+  Pending = 'pending',
+  Error = 'error',
+  Success = 'success',
+  Initial = 'initial',
 }
 
 export type UseApiReturnValue<
   Method extends keyof StarshipsApi,
-  ResponseData = Awaited<ReturnType<StarshipsApi[Method]>>
+  ResponseData = Awaited<ReturnType<StarshipsApi[Method]>>,
 > = {
   makeApiCall: (...args: Parameters<StarshipsApi[Method]>) => Promise<void>;
   reset: () => void;
@@ -89,7 +89,7 @@ export const DEFAULT_STATE = {
 
 export const useApi = <
   Method extends keyof StarshipsApi,
-  ResponseData = Awaited<ReturnType<StarshipsApi[Method]>>
+  ResponseData = Awaited<ReturnType<StarshipsApi[Method]>>,
 >(
   method: Method,
   {
@@ -100,7 +100,7 @@ export const useApi = <
     onSuccess?: (data: ResponseData) => any;
     onError?: (error: Error) => any;
     initialStatus?: UseApiStatus;
-  } = {}
+  } = {},
 ) => {
   const derivedDefaultState = {
     ...DEFAULT_STATE,
@@ -145,7 +145,7 @@ export const useApi = <
     },
     {
       ...derivedDefaultState,
-    }
+    },
   );
 
   const reset = useCallback(() => {
@@ -183,7 +183,7 @@ export const useApi = <
       } else {
         const lastArg = args[starshipsApiMethodArgsMaxCount - 1];
         args[starshipsApiMethodArgsMaxCount - 1] = {
-          ...(typeof lastArg === "object" ? lastArg : {}),
+          ...(typeof lastArg === 'object' ? lastArg : {}),
           ...config,
         };
       }
@@ -191,7 +191,7 @@ export const useApi = <
       try {
         const responseData = (await starshipsApi[method](
           // @ts-expect-error - we know that the args are correct
-          ...args
+          ...args,
         )) as ResponseData;
 
         await onSuccess?.(responseData);
@@ -201,7 +201,7 @@ export const useApi = <
           payload: responseData,
         });
       } catch (err: any) {
-        if (err.name === "AbortError") {
+        if (err.name === 'AbortError') {
           reset();
 
           return;
@@ -215,13 +215,13 @@ export const useApi = <
         });
       }
     },
-    [method, onSuccess, onError, dispatch, reset, cancelApiCall]
+    [method, onSuccess, onError, dispatch, reset, cancelApiCall],
   );
 
   const statusFlags = Object.fromEntries(
     Object.entries(UseApiStatus).map(([statusName, statusId]) => {
       return [`is${statusName}`, apiState.status === statusId];
-    })
+    }),
   );
 
   return {

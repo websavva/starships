@@ -1,11 +1,13 @@
-import * as React from "react";
+import * as React from 'react';
 
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { colors } from "styles/colors";
+import { colors } from 'styles/colors';
 
-export interface PaginationProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "onChange"> {
+export interface PaginationProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  'onChange'
+> {
   hasNext?: boolean;
   hasPrevious?: boolean;
   page?: number;

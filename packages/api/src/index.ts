@@ -1,28 +1,27 @@
-import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios";
+import axios, { type AxiosInstance } from 'axios';
 
 import type {
-  Starship,
   GetStarshipsParams,
   GetStarshipsResponse,
   ApiRequestConfig,
   BaseStarship,
   GetStarshipResponse,
-} from "./types";
+} from './types';
 
-export * from "./types";
+export * from './types';
 
 export class StarshipsApi {
   private axios: AxiosInstance = axios.create({
-    baseURL: "https://swapi.dev/api/starships",
+    baseURL: 'https://swapi.dev/api/starships',
   });
 
   async getStarships(
     params?: GetStarshipsParams,
-    config?: ApiRequestConfig
+    config?: ApiRequestConfig,
   ): Promise<GetStarshipsResponse> {
     const response = await this.axios.get<
-      Omit<GetStarshipsResponse, "results"> & { results: BaseStarship[] }
-    >("/", {
+      Omit<GetStarshipsResponse, 'results'> & { results: BaseStarship[] }
+    >('/', {
       ...config,
       params,
     });
@@ -33,14 +32,14 @@ export class StarshipsApi {
       ...paginationProps,
       results: rawStarships.map((rawStarship) => ({
         ...rawStarship,
-        id: Number(rawStarship.url.split("/").filter(Boolean).pop()!),
+        id: Number(rawStarship.url.split('/').filter(Boolean).pop()!),
       })),
     };
   }
 
   async getStarship(
     id: number,
-    config?: ApiRequestConfig
+    config?: ApiRequestConfig,
   ): Promise<GetStarshipResponse> {
     const response = await this.axios.get<BaseStarship>(`/${id}`, config);
 

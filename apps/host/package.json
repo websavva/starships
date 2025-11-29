@@ -9,12 +9,16 @@
     "@starships/module-federation-config": "workspace:*",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "@starships/tsconfig": "workspace:*"
+    "@starships/tsconfig": "workspace:*",
+    "@starships/eslint-config": "workspace:*",
+    "eslint": "catalog:"
   },
   "scripts": {
     "dev": "webpack-cli serve --mode development",
     "build": "webpack --mode production",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "react": "catalog:",

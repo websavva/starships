@@ -1,12 +1,12 @@
-import * as React from "react";
-import styled, { keyframes } from "styled-components";
+import * as React from 'react';
+import styled, { keyframes } from 'styled-components';
 
-import { colors } from "styles/colors";
+import { colors } from 'styles/colors';
 
-// @ts-expect-error
-import stars from "./assets/stars.png";
-// @ts-expect-error
-import twinkling from "./assets/twinkling.png";
+// @ts-expect-error Missing type declaration
+import stars from './assets/stars.png';
+// @ts-expect-error Missing type declaration
+import twinkling from './assets/twinkling.png';
 
 const moveTwinkBack = keyframes`
   from {
@@ -36,7 +36,7 @@ const OuterSpaceBackgroundTwinkling = styled(baseDiv)`
 `;
 
 export const OuterSpaceBackground = (
-  props: React.HTMLAttributes<HTMLDivElement>
+  props: React.HTMLAttributes<HTMLDivElement>,
 ) => {
   return (
     <div {...props}>

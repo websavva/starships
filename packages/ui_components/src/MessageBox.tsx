@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
-import { colors } from "styles/colors";
+import { colors } from 'styles/colors';
 
-import { maxWidth } from "./styles/mq";
+import { maxWidth } from './styles/mq';
 
 export const VaderIcon = styled((props: React.SVGProps<SVGSVGElement>) => {
   return (
@@ -110,12 +110,10 @@ export const MessageBox = styled(
       <div {...props}>
         <VaderIcon className="vader-icon" />
 
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </div>
     );
-  }
+  },
 )`
   display: flex;
   flex-direction: column;
@@ -124,29 +122,38 @@ export const MessageBox = styled(
   color: ${colors.primary.toString()};
   font-size: 2.5rem;
 
-  ${maxWidth("md", css`
-    font-size: 1.8rem;
-  `)}
+  ${maxWidth(
+    'md',
+    css`
+      font-size: 1.8rem;
+    `,
+  )}
 
   .vader-icon {
     width: 20rem;
     height: auto;
     display: block;
 
-    ${maxWidth("md", css`
-      width: 15rem;
-    `)}
+    ${maxWidth(
+      'md',
+      css`
+        width: 15rem;
+      `,
+    )}
   }
 
   & > * + * {
     margin-top: 2rem;
   }
 
-  ${maxWidth("md", css`
-    & > * + * {
-      margin-top: 1rem;
-    }
-  `)}
+  ${maxWidth(
+    'md',
+    css`
+      & > * + * {
+        margin-top: 1rem;
+      }
+    `,
+  )}
 `;
 
 export default MessageBox;

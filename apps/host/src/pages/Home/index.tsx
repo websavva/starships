@@ -1,26 +1,26 @@
-import * as React from "react";
-import { useEffect, useCallback, useMemo } from "react";
-import { Link, useSearchParams } from "react-router";
-import styled, { css } from "styled-components";
+import * as React from 'react';
+import { useEffect, useCallback, useMemo } from 'react';
+import { Link, useSearchParams } from 'react-router';
+import styled, { css } from 'styled-components';
 
-import { maxWidth } from "ui_components/styles/mq";
-import { Logo } from "ui_components/Logo";
-import StarshipItem from "ui_components/StarshipItem";
-import Card from "ui_components/Card";
-import Spinner from "ui_components/Spinner";
-import Pagination from "ui_components/Pagination";
-import MessageBox from "ui_components/MessageBox";
-import ErrorAlert from "ui_components/ErrorAlert";
+import { maxWidth } from 'ui_components/styles/mq';
+import { Logo } from 'ui_components/Logo';
+import StarshipItem from 'ui_components/StarshipItem';
+import Card from 'ui_components/Card';
+import Spinner from 'ui_components/Spinner';
+import Pagination from 'ui_components/Pagination';
+import MessageBox from 'ui_components/MessageBox';
+import ErrorAlert from 'ui_components/ErrorAlert';
 
-import { useApi } from "hooks/use-api";
+import { useApi } from 'hooks/use-api';
 
 import {
   searchParamsToParams,
   paramsToSearchParams,
-} from "utils/search-params";
+} from 'utils/search-params';
 
-import SearchForm from "./SearchForm";
-import { getDefaultHomePageParams } from "./config";
+import SearchForm from './SearchForm';
+import { getDefaultHomePageParams } from './config';
 
 const StarshipsList = styled.ul`
   list-style: none;
@@ -39,12 +39,12 @@ const StarshipsList = styled.ul`
   }
 
   ${maxWidth(
-    "md",
+    'md',
     css`
       & > * + * {
         margin-top: 1rem;
       }
-    `
+    `,
   )}
 `;
 
@@ -69,12 +69,12 @@ const StarshipsListCard = styled(Card)`
   --clip-width: 10rem;
 
   ${maxWidth(
-    "md",
+    'md',
     css`
       padding: 1.5rem 1rem;
       --clip-width: 5rem;
       max-height: 70rem;
-    `
+    `,
   )}
 `;
 
@@ -114,12 +114,12 @@ export const Home = () => {
 
     makeApiCall,
     cancelApiCall,
-  } = useApi("getStarships");
+  } = useApi('getStarships');
 
   useEffect(() => {
     const params = paramsToSearchParams(
       { page, search },
-      getDefaultHomePageParams()
+      getDefaultHomePageParams(),
     );
 
     makeApiCall(params);
@@ -141,7 +141,7 @@ export const Home = () => {
   const switchPage = (page: number) => {
     const filteredParams = paramsToSearchParams(
       { page, search },
-      getDefaultHomePageParams()
+      getDefaultHomePageParams(),
     );
     setSearchParams(filteredParams);
   };
@@ -158,16 +158,16 @@ export const Home = () => {
     (name: string) => {
       const filteredParams = paramsToSearchParams(
         { search: name },
-        getDefaultHomePageParams()
+        getDefaultHomePageParams(),
       );
 
       setSearchParams(filteredParams);
     },
-    [setSearchParams]
+    [setSearchParams],
   );
 
   const onClearSearch = useCallback(() => {
-    onSearchChange("");
+    onSearchChange('');
   }, [onSearchChange]);
 
   return (

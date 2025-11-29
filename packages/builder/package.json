@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
-    "typescript": "5.5.3",
+    "typescript": "catalog:",
     "@types/fs-extra": "^11.0.4",
     "@types/serve-handler": "^6.1.4",
-    "@starships/tsconfig": "workspace:*"
+    "@starships/tsconfig": "workspace:*",
+    "@starships/eslint-config": "workspace:*",
+    "eslint": "catalog:"
   },
   "dependencies": {
     "dotenv": "^17.2.3",
@@ -20,6 +22,8 @@
   },
   "scripts": {
     "build": "jiti scripts/build.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   }
 }

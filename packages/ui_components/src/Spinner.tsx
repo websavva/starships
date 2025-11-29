@@ -1,9 +1,8 @@
-import * as React from "react";
-import styled, { keyframes, css } from "styled-components";
+import * as React from 'react';
 
-import { colors } from "styles/colors";
+import styled, { keyframes } from 'styled-components';
 
-import { maxWidth } from "./styles/mq";
+import { colors } from 'styles/colors';
 
 const spin = keyframes`
   from {
@@ -26,7 +25,7 @@ export const Spinner = styled.div`
   position: relative;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;

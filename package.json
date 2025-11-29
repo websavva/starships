@@ -19,6 +19,8 @@
     "build": "pnpm --filter \"./packages/builder/**\" build --stage production",
     "dev:prepare": "pnpm --filter \"./packages/builder/**\" build --stage prepare",
     "clean": "find . -type d \\( -name dist -o -name '@mf-types' \\) ! -path '*/node_modules/*' -exec rm -rf {} + 2>/dev/null || true",
-    "typecheck": "pnpm --filter \"./{packages,apps}/**\" --parallel typecheck"
+    "typecheck": "pnpm --filter \"./{packages,apps}/**\" --parallel typecheck",
+    "lint": "pnpm --filter \"./{packages,apps}/**\" --parallel lint",
+    "lint:fix": "pnpm --filter \"./{packages,apps}/**\" --parallel lint:fix"
   }
 }

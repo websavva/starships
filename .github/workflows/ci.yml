@@ -14,18 +14,23 @@ on:
     branches: [main]
 
 jobs:
-  # lint:
-  #   name: Run linter
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 5
-  #   steps:
-  #     - uses: actions/checkout@v4
+  lint:
+    name: Run linter
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Prepare workflow
-  #       uses: ./.github/actions/prepare-workflow
+      - name: Prepare workflow
+        uses: ./.github/actions/prepare-workflow
 
-  #     - name: Run linter
-  #       run: pnpm lint
+      - name: Prepare types
+        run: pnpm run dev:prepare
+        env:
+          APP_BASE_URL: http://localhost:3000
+
+      - name: Run linter
+        run: pnpm lint
 
   typecheck:
     name: Run typecheck

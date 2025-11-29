@@ -1,7 +1,7 @@
-import * as React from "react";
-import styled from "styled-components";
+import * as React from 'react';
+import styled from 'styled-components';
 
-import { colors } from "styles/colors";
+import { colors } from 'styles/colors';
 
 export interface SummaryCardProps extends React.HTMLAttributes<HTMLDivElement> {
   label: string;
@@ -29,7 +29,7 @@ export const SummaryCard = styled(
         <Value>{value}</Value>
       </div>
     );
-  }
+  },
 )`
   position: relative;
   display: flex;
@@ -43,7 +43,7 @@ export const SummaryCard = styled(
 
   &::after,
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     height: 100%;

@@ -1,9 +1,9 @@
-import * as React from "react";
-import styled, { css } from "styled-components";
+import * as React from 'react';
+import styled, { css } from 'styled-components';
 
-import { colors } from "styles/colors";
+import { colors } from 'styles/colors';
 
-import { maxWidth } from "./styles/mq";
+import { maxWidth } from './styles/mq';
 
 const ExlamationTriangeIcon = styled((props: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -39,11 +39,9 @@ export const ErrorAlert = styled(
     <div {...props}>
       <ExlamationTriangeIcon className="exlamation-triangle-icon" />
 
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </div>
-  )
+  ),
 )`
   display: flex;
   flex-direction: column;
@@ -52,26 +50,35 @@ export const ErrorAlert = styled(
   font-size: 2rem;
   text-align: center;
 
-  ${maxWidth("md", css`
-    font-size: 1.5rem;
-  `)}
+  ${maxWidth(
+    'md',
+    css`
+      font-size: 1.5rem;
+    `,
+  )}
 
   .exlamation-triangle-icon {
     width: 20rem;
     height: auto;
     display: block;
 
-    ${maxWidth("md", css`
-      width: 12rem;
-    `)}
+    ${maxWidth(
+      'md',
+      css`
+        width: 12rem;
+      `,
+    )}
   }
 
   & > * + * {
     margin-top: 2rem;
 
-    ${maxWidth("md", css`
-      margin-top: 1rem;
-    `)}
+    ${maxWidth(
+      'md',
+      css`
+        margin-top: 1rem;
+      `,
+    )}
   }
 `;
 

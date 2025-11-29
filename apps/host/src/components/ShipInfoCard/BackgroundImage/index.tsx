@@ -1,9 +1,9 @@
-import * as React from "react";
-import styled from "styled-components";
-import { useEffect, useState, useCallback } from "react";
+import * as React from 'react';
+import styled from 'styled-components';
+import { useEffect, useState, useCallback } from 'react';
 
 // @ts-expect-error - Missing webpack types
-const shipImagesCtx = require.context("./images", false, /\.jpg$/);
+const shipImagesCtx = require.context('./images', false, /\.jpg$/);
 
 const shipImages = shipImagesCtx.keys().map((key: string) => {
   return shipImagesCtx(key);
@@ -28,7 +28,7 @@ export const BackgroundImage = styled(
   ({
     id,
     ...props
-  }: { id: number } & Omit<React.HTMLAttributes<HTMLImageElement>, "id">) => {
+  }: { id: number } & Omit<React.HTMLAttributes<HTMLImageElement>, 'id'>) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const imgUrl = getShipImageUrl(id);
@@ -50,7 +50,7 @@ export const BackgroundImage = styled(
         onLoad={onLoad}
       />
     );
-  }
+  },
 )``;
 
 export default BackgroundImage;

@@ -1,11 +1,11 @@
-import * as React from "react";
-import { useParams, useNavigate } from "react-router";
-import { useEffect } from "react";
-import styled, { css } from "styled-components";
+import * as React from 'react';
+import { useParams, useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import styled, { css } from 'styled-components';
 
-import { maxWidth } from "ui_components/styles/mq";
+import { maxWidth } from 'ui_components/styles/mq';
 
-import ShipInfoCard from "@/components/ShipInfoCard";
+import ShipInfoCard from '@/components/ShipInfoCard';
 
 const idRegex = /^\d+$/;
 
@@ -17,7 +17,7 @@ export const Ship = styled((props: React.HTMLAttributes<HTMLDivElement>) => {
 
   useEffect(() => {
     if (isIdInvalid) {
-      navigate("/");
+      navigate('/');
     }
   }, [navigate, isIdInvalid]);
 
@@ -42,15 +42,21 @@ export const Ship = styled((props: React.HTMLAttributes<HTMLDivElement>) => {
     min-height: 50rem;
     padding: 5rem 2rem;
 
-    ${maxWidth("lg", css`
-      width: 100%;
-      margin: 2rem;
-      padding: 2rem 1rem;
-    `)}
+    ${maxWidth(
+      'lg',
+      css`
+        width: 100%;
+        margin: 2rem;
+        padding: 2rem 1rem;
+      `,
+    )}
 
-    ${maxWidth("sm", css`
-      margin: 2rem 1rem;
-    `)}
+    ${maxWidth(
+      'sm',
+      css`
+        margin: 2rem 1rem;
+      `,
+    )}
   }
 `;
 

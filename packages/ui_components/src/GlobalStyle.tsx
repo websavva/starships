@@ -1,23 +1,26 @@
-import { createGlobalStyle, css } from "styled-components";
-import { fonts } from "styles/fonts";
-import { colors } from "styles/colors";
+import { createGlobalStyle, css } from 'styled-components';
+import { fonts } from 'styles/fonts';
+import { colors } from 'styles/colors';
 
-import { maxWidth } from "./styles/mq";
+import { maxWidth } from './styles/mq';
 
 export const GlobalStyle = createGlobalStyle`
   html {
     font-size: 62.5%;
 
     ${maxWidth(
-      "2xl",
+      '2xl',
       css`
         font-size: 55%;
-      `
+      `,
     )}
 
-    ${maxWidth('md', css`
-      font-size: 58%;
-    `)}
+    ${maxWidth(
+      'md',
+      css`
+        font-size: 58%;
+      `,
+    )}
   }
 
   *,

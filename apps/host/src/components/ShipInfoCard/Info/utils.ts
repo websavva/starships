@@ -1,5 +1,5 @@
-import type { Starship } from "api";
-import { upperFirst } from "utils/upper-first";
+import type { Starship } from 'api';
+import { upperFirst } from 'utils/upper-first';
 
 export type FormattedStarship = {
   [Key in keyof Starship]: {
@@ -14,30 +14,30 @@ export type FormattedStarship = {
 };
 
 const STATIC_LABELS = {
-  cost_in_credits: "Cost",
-  hyperdrive_rating: "Rating",
+  cost_in_credits: 'Cost',
+  hyperdrive_rating: 'Rating',
 };
 
 const NUMBER_SCALES = [
   {
     scale: 1_000_000_000,
-    suffix: "B",
+    suffix: 'B',
   },
   {
     scale: 1_000_000,
-    suffix: "M",
+    suffix: 'M',
   },
   {
     scale: 1_000,
-    suffix: "K",
+    suffix: 'K',
   },
 ];
 
 export const formatNumber = (
   value: string | number,
-  decimals: number = 1
+  decimals: number = 1,
 ): string => {
-  const num = typeof value === "string" ? parseFloat(value) : value;
+  const num = typeof value === 'string' ? parseFloat(value) : value;
 
   if (isNaN(num)) {
     return String(value);
@@ -45,7 +45,7 @@ export const formatNumber = (
 
   // Use K/M/B format
   const absNum = Math.abs(num);
-  const sign = num < 0 ? "-" : "";
+  const sign = num < 0 ? '-' : '';
 
   for (const { scale, suffix } of NUMBER_SCALES) {
     if (absNum >= scale) {
@@ -55,7 +55,7 @@ export const formatNumber = (
   }
 
   // Less than 1000, return as-is with commas
-  return new Intl.NumberFormat("en-US").format(num);
+  return new Intl.NumberFormat('en-US').format(num);
 };
 
 const formatLabel = (label: string) => {
@@ -66,12 +66,12 @@ const formatLabel = (label: string) => {
   }
 
   return label
-    .split("_")
+    .split('_')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+    .join(' ');
 };
 
-const DATE_PROP_NAMES = ["created", "edited"];
+const DATE_PROP_NAMES = ['created', 'edited'];
 
 const isValidNumber = (value: string) => {
   return !isNaN(Number(value));
@@ -79,15 +79,15 @@ const isValidNumber = (value: string) => {
 
 const formatValue = (name: string, value: string) => {
   if (DATE_PROP_NAMES.includes(name)) {
-    return new Date(value).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    return new Date(value).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
     });
   }
 
   if (Array.isArray(value)) {
-    const singularName = name.replace(/s$/, "");
+    const singularName = name.replace(/s$/, '');
 
     return value.map((url, index) => {
       return {
@@ -112,6 +112,6 @@ export const formatStarship = (starship: Starship): FormattedStarship => {
           value: formatValue(key, value),
         },
       ];
-    })
+    }),
   ) as unknown as FormattedStarship;
 };

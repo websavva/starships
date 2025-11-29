@@ -1,11 +1,11 @@
-import * as React from "react";
-import { HashRouter, Routes, Route } from "react-router";
+import * as React from 'react';
+import { HashRouter, Routes, Route } from 'react-router';
 
-import GlobalStyle from "ui_components/GlobalStyle";
+import GlobalStyle from 'ui_components/GlobalStyle';
 
-import Layout from "@/components/Layout";
-import Home from "@/pages/Home";
-import Ship from "@/pages/Ship";
+import Layout from '@/components/Layout';
+import Home from '@/pages/Home';
+import Ship from '@/pages/Ship';
 
 const App = () => (
   <Layout>

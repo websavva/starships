@@ -1,13 +1,13 @@
-import * as React from "react";
-import styled, { css } from "styled-components";
-import { useMemo } from "react";
+import * as React from 'react';
+import styled, { css } from 'styled-components';
+import { useMemo } from 'react';
 
-import { maxWidth } from "ui_components/styles/mq";
-import type { Starship } from "api";
-import Accordion from "ui_components/Accordion";
+import { maxWidth } from 'ui_components/styles/mq';
+import type { Starship } from 'api';
+import Accordion from 'ui_components/Accordion';
 
-import { formatStarship } from "./utils";
-import SummaryCard from "./SummaryCard";
+import { formatStarship } from './utils';
+import SummaryCard from './SummaryCard';
 import {
   Details,
   DetailsColumn,
@@ -15,7 +15,7 @@ import {
   DetailsColumnItem,
   DetailsColumnList,
   DetailsColumnListLinks,
-} from "./Details";
+} from './Details';
 
 export interface InfoProps extends React.HTMLAttributes<HTMLDivElement> {
   starship: Starship;
@@ -29,9 +29,12 @@ const Heading = styled.div`
   text-align: center;
   margin-bottom: 2rem;
 
-  ${maxWidth("sm", css`
-    font-size: 2rem;
-  `)}
+  ${maxWidth(
+    'sm',
+    css`
+      font-size: 2rem;
+    `,
+  )}
 `;
 
 const Footer = styled.div`
@@ -41,10 +44,13 @@ const Footer = styled.div`
   width: 100%;
   margin-top: 4rem;
 
-  ${maxWidth("lg", css`
-    flex-direction: column;
-    gap: 2rem;
-  `)}
+  ${maxWidth(
+    'lg',
+    css`
+      flex-direction: column;
+      gap: 2rem;
+    `,
+  )}
 `;
 
 const Info = styled(({ starship, ...props }: InfoProps) => {
@@ -149,9 +155,12 @@ const Info = styled(({ starship, ...props }: InfoProps) => {
   justify-content: center;
   padding: 0 3rem;
 
-  ${maxWidth("sm", css`
-    padding: 0 1rem;
-  `)}
+  ${maxWidth(
+    'sm',
+    css`
+      padding: 0 1rem;
+    `,
+  )}
 `;
 
 export default Info;

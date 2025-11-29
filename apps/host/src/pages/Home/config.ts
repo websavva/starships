@@ -5,5 +5,5 @@ export interface HomePageParams {
 
 export const getDefaultHomePageParams = (): HomePageParams => ({
   page: 1,
-  search: "",
+  search: '',
 });

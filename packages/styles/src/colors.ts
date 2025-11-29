@@ -1,4 +1,4 @@
-import { createColor } from "./utils/create-color";
+import { createColor } from './utils/create-color';
 
 export const colors = {
   primary: createColor({ h: 0, s: 0, l: 79 }),
