@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/websavva/starships/compare/starships-v1.0.0...starships-v1.0.1) (2025-11-29)
+
+
+### Bug Fixes
+
+* **build:** shamefully-hoist was set to true to make sub deps accessible ([ca6f432](https://github.com/websavva/starships/commit/ca6f432129985cede16ef8079ba5a3026fe4cc73))
+
 ## 1.0.0 (2025-11-28)
 
 
