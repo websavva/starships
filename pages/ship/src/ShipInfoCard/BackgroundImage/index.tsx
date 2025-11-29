@@ -39,7 +39,7 @@ export const BackgroundImage = styled(
       // But if image is already loaded (cached), keep it loaded
       const img = imageRef.current;
 
-      if (img?.complete && img.src === imgUrl) {
+      if (img?.complete && img.getAttribute('src') === imgUrl) {
         // Image is already loaded (cached), set loaded immediately
         setIsLoaded(true);
       } else {
