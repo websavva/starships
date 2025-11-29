@@ -6,7 +6,7 @@
 
 **Explore the galaxy of starships from the Star Wars universe**
 
-*A modern microfrontend application built with Module Federation, React, and TypeScript*
+_A modern microfrontend application built with Module Federation, React, and TypeScript_
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19.2-blue.svg)](https://react.dev/)
@@ -41,32 +41,35 @@ This project follows a **microfrontend architecture** where different parts of t
 ┌─────────────────────────────────────────────────────────┐
 │                      Host App                           │
 │                  (apps/host)                            │
-│  ┌────────────┐  ┌────────────┐  ┌────────────┐        │
+│  ┌────────────┐  ┌────────────┐  ┌────────────┐         │
 │  │ Home Page  │  │ Ship Page  │  │ UI Components│       │
-│  │ (Remote)   │  │  (Remote)  │  │  (Remote)  │        │
-│  └────────────┘  └────────────┘  └────────────┘        │
+│  │ (Remote)   │  │  (Remote)  │  │  (Remote)  │         │
+│  └────────────┘  └────────────┘  └────────────┘         │
 │         │              │                  │             │
 │         └──────────────┼──────────────────┘             │
 │                        │                                │
 │         ┌──────────────┼──────────────┐                 │
 │         ▼              ▼              ▼                 │
-│  ┌─────────┐   ┌──────────┐  ┌─────────────┐           │
-│  │  API    │   │  Hooks   │  │   Styles    │           │
-│  │ (Remote)│   │ (Remote) │  │  (Remote)   │           │
-│  └─────────┘   └──────────┘  └─────────────┘           │
+│  ┌─────────┐   ┌──────────┐  ┌─────────────┐            │
+│  │  API    │   │  Hooks   │  │   Styles    │            │
+│  │ (Remote)│   │ (Remote) │  │  (Remote)   │            │
+│  └─────────┘   └──────────┘  └─────────────┘            │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ### 📦 Packages
 
 #### **Apps**
+
 - `apps/host` - Main host application that orchestrates all microfrontends
 
 #### **Pages** (Microfrontend Pages)
+
 - `pages/home` - Home page with starship list and search
 - `pages/ship` - Individual starship detail page
 
 #### **Packages** (Shared Microfrontends)
+
 - `packages/api` - API client and types
 - `packages/hooks` - Shared React hooks (useApi, etc.)
 - `packages/ui_components` - Reusable UI component library
@@ -119,6 +122,7 @@ pnpm dev:prepare
 ```
 
 The application will be available at:
+
 - **Host**: http://localhost:3000
 - **API**: http://localhost:3002
 - **UI Components**: http://localhost:3005
@@ -133,6 +137,7 @@ pnpm build
 ```
 
 This will:
+
 1. Build all remote microfrontends
 2. Build the host application
 3. Bundle everything into a single `dist/` directory
@@ -158,17 +163,20 @@ pnpm clean
 ## 🎨 Features
 
 ### Home Page
+
 - Browse starships from the Star Wars universe
 - Real-time search by name or model
 - Pagination for easy navigation
 - Beautiful card-based UI
 
 ### Ship Detail Page
+
 - Detailed information about each starship
 - Dynamic background images
 - Responsive design
 
 ### Shared Components
+
 - Reusable UI components (Cards, Buttons, Pagination, etc.)
 - Consistent styling system
 - Type-safe component library
