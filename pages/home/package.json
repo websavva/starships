@@ -1,0 +1,29 @@
+{
+  "name": "@starships/home_page",
+  "version": "3.0.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/preset-react": "7.24.7",
+    "@babel/preset-typescript": "7.24.7",
+    "@starships/webpack": "workspace:*",
+    "@starships/module-federation-config": "workspace:*",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@starships/tsconfig": "workspace:*",
+    "@starships/eslint-config": "workspace:*",
+    "eslint": "catalog:"
+  },
+  "scripts": {
+    "dev": "webpack-cli serve --mode development",
+    "build": "webpack --mode production",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-router": "catalog:",
+    "styled-components": "catalog:"
+  }
+}

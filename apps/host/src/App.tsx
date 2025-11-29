@@ -4,8 +4,10 @@ import { HashRouter, Routes, Route } from 'react-router';
 import GlobalStyle from 'ui_components/GlobalStyle';
 
 import Layout from '@/components/Layout';
-import Home from '@/pages/Home';
-import Ship from '@/pages/Ship';
+import { lazyPage } from '@/utils/lazy-page';
+
+const HomePage = lazyPage(() => import('home_page/index'));
+const ShipPage = lazyPage(() => import('ship_page/index'));
 
 const App = () => (
   <Layout>
@@ -13,9 +15,9 @@ const App = () => (
 
     <HashRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
 
-        <Route path="/starships/:id" element={<Ship />} />
+        <Route path="/starships/:id" element={<ShipPage />} />
       </Routes>
     </HashRouter>
   </Layout>

@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 
 import { maxWidth } from 'ui_components/styles/mq';
 
-import ShipInfoCard from '@/components/ShipInfoCard';
+import ShipInfoCard from './ShipInfoCard';
 
 const idRegex = /^\d+$/;
 

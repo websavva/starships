@@ -349,6 +349,92 @@ importers:
         specifier: 'catalog:'
         version: 9.39.1(jiti@2.6.1)
 
+  pages/home:
+    dependencies:
+      react:
+        specifier: 'catalog:'
+        version: 19.2.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.0(react@19.2.0)
+      react-router:
+        specifier: 'catalog:'
+        version: 7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      styled-components:
+        specifier: 'catalog:'
+        version: 6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+    devDependencies:
+      '@babel/preset-react':
+        specifier: 7.24.7
+        version: 7.24.7(@babel/core@7.24.7)
+      '@babel/preset-typescript':
+        specifier: 7.24.7
+        version: 7.24.7(@babel/core@7.24.7)
+      '@starships/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@starships/module-federation-config':
+        specifier: workspace:*
+        version: link:../../packages/module-federation-config
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+      '@starships/webpack':
+        specifier: workspace:*
+        version: link:../../packages/webpack
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.6
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.2.3(@types/react@19.2.6)
+      eslint:
+        specifier: 'catalog:'
+        version: 9.39.1(jiti@2.6.1)
+
+  pages/ship:
+    dependencies:
+      react:
+        specifier: 'catalog:'
+        version: 19.2.0
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.0(react@19.2.0)
+      react-router:
+        specifier: 'catalog:'
+        version: 7.9.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      styled-components:
+        specifier: 'catalog:'
+        version: 6.1.19(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+    devDependencies:
+      '@babel/preset-react':
+        specifier: 7.24.7
+        version: 7.24.7(@babel/core@7.24.7)
+      '@babel/preset-typescript':
+        specifier: 7.24.7
+        version: 7.24.7(@babel/core@7.24.7)
+      '@starships/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@starships/module-federation-config':
+        specifier: workspace:*
+        version: link:../../packages/module-federation-config
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
+      '@starships/webpack':
+        specifier: workspace:*
+        version: link:../../packages/webpack
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.6
+      '@types/react-dom':
+        specifier: 'catalog:'
+        version: 19.2.3(@types/react@19.2.6)
+      eslint:
+        specifier: 'catalog:'
+        version: 9.39.1(jiti@2.6.1)
+
 packages:
 
   '@ampproject/remapping@2.3.0':

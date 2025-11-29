@@ -16,7 +16,9 @@
         "apps/host/package.json",
         "packages/builder/package.json",
         "packages/eslint-config/package.json",
-        "packages/tsconfig/package.json"
+        "packages/tsconfig/package.json",
+        "pages/home/package.json",
+        "pages/ship/package.json"
       ]
     }
   }

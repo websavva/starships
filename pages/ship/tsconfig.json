@@ -1,0 +1,10 @@
+{
+  "extends": "@starships/tsconfig/react.json",
+  "compilerOptions": {
+    "paths": {
+      "*": ["./@mf-types/*"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"]
+}

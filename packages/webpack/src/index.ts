@@ -69,20 +69,14 @@ export function getWebpackConfig(options: WebpackConfigOptions) {
         }),
       ),
       shared: options.tsx
-        ? {
-            react: {
-              singleton: true,
-              requiredVersion: getPackageVersion('react'),
-            },
-            'react-dom': {
-              singleton: true,
-              requiredVersion: getPackageVersion('react-dom'),
-            },
-            'styled-components': {
-              singleton: true,
-              requiredVersion: getPackageVersion('styled-components'),
-            },
-          }
+        ? ['react', 'react-dom', 'styled-components', 'react-router'].map(
+            (name) => ({
+              [name]: {
+                singleton: true,
+                requiredVersion: getPackageVersion(name),
+              },
+            }),
+          )
         : undefined,
     } satisfies ModuleFederationPluginOptions;
 

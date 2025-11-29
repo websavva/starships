@@ -1,6 +1,7 @@
 packages:
   - 'apps/*'
   - 'packages/*'
+  - 'pages/*'
 
 catalog:
   react: 19.2.0

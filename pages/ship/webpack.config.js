@@ -4,18 +4,22 @@ const { getWebpackConfig } = require('@starships/webpack/src/index.js');
 const moduleFederationConfig = require('@starships/module-federation-config');
 
 module.exports = getWebpackConfig({
-  name: 'host',
+  name: moduleFederationConfig.ship_page.name,
+  entry: './dev/index',
   tsx: true,
+  devPort: moduleFederationConfig.ship_page.devPort,
   dir: __dirname,
-  devPort: 3000,
   remotes: [
+    moduleFederationConfig.api.name,
+    moduleFederationConfig.hooks.name,
+    moduleFederationConfig.utils.name,
     moduleFederationConfig.ui_components.name,
-    moduleFederationConfig.home_page.name,
-    moduleFederationConfig.ship_page.name,
+    moduleFederationConfig.styles.name,
   ],
   aliases: {
     '@': path.resolve(__dirname, 'src'),
   },
-  htmlTemplatePath: path.resolve(__dirname, 'index.html'),
-  publicDirs: [path.resolve(__dirname, 'public')],
+  exposes: {
+    './index': './src/index',
+  },
 });
