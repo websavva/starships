@@ -1,10 +1,6 @@
 {
+  "extends": "@starships/tsconfig/react.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "jsx": "react",
-    "baseUrl": ".",
     "paths": {
       "*": ["./@mf-types/*"],
       "@/*": ["./src/*"]

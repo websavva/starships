@@ -1,12 +1,9 @@
 {
+  "extends": "@starships/tsconfig/base.json",
   "compilerOptions": {
-    "sourceMap": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "baseUrl": ".",
     "paths": {
       "*": ["./@mf-types/*"]
-    },
+    }
   },
   "include": ["src/**/*"]
 }

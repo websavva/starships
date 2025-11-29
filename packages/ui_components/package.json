@@ -6,7 +6,8 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@starships/webpack": "workspace:*",
-    "@starships/module-federation-config": "workspace:*"
+    "@starships/module-federation-config": "workspace:*",
+    "@starships/tsconfig": "workspace:*"
   },
   "scripts": {
     "dev": "webpack-cli serve --mode development",

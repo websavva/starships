@@ -1,14 +1,9 @@
-import * as React from 'react';
-
-import { starshipsApi } from 'api';
-
-import LocalButton from '../src/Button';
+import * as React from "react";
 
 const App = () => (
   <div>
     <h1>Typescript</h1>
     <h2>App 2</h2>
-    <LocalButton size="small" />
   </div>
 );
 

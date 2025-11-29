@@ -57,6 +57,9 @@ importers:
       '@starships/module-federation-config':
         specifier: workspace:*
         version: link:../../packages/module-federation-config
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       '@starships/webpack':
         specifier: workspace:*
         version: link:../../packages/webpack
@@ -76,6 +79,9 @@ importers:
       '@starships/module-federation-config':
         specifier: workspace:*
         version: link:../module-federation-config
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@starships/webpack':
         specifier: workspace:*
         version: link:../webpack
@@ -107,6 +113,9 @@ importers:
         specifier: ^6.1.6
         version: 6.1.6
     devDependencies:
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/fs-extra':
         specifier: ^11.0.4
         version: 11.0.4
@@ -126,6 +135,9 @@ importers:
       '@starships/module-federation-config':
         specifier: workspace:*
         version: link:../module-federation-config
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@starships/webpack':
         specifier: workspace:*
         version: link:../webpack
@@ -140,9 +152,14 @@ importers:
       '@starships/module-federation-config':
         specifier: workspace:*
         version: link:../module-federation-config
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@starships/webpack':
         specifier: workspace:*
         version: link:../webpack
+
+  packages/tsconfig: {}
 
   packages/ui_components:
     dependencies:
@@ -159,6 +176,9 @@ importers:
       '@starships/module-federation-config':
         specifier: workspace:*
         version: link:../module-federation-config
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@starships/webpack':
         specifier: workspace:*
         version: link:../webpack
@@ -174,6 +194,9 @@ importers:
       '@starships/module-federation-config':
         specifier: workspace:*
         version: link:../module-federation-config
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@starships/webpack':
         specifier: workspace:*
         version: link:../webpack
@@ -216,6 +239,9 @@ importers:
       html-webpack-plugin:
         specifier: 5.6.0
         version: 5.6.0(webpack@5.101.0)
+      jiti:
+        specifier: ^2.6.1
+        version: 2.6.1
       typescript:
         specifier: 5.5.3
         version: 5.5.3
@@ -228,6 +254,10 @@ importers:
       webpack-dev-server:
         specifier: 5.0.4
         version: 5.0.4(webpack-cli@5.1.4)(webpack@5.101.0)
+    devDependencies:
+      '@starships/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
 packages:
 

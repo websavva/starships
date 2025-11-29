@@ -1,4 +1,4 @@
 {
   "extends": "@starships/tsconfig/base.json",
-  "include": ["scripts/**/*"]
+  "include": ["src/**/*.ts"]
 }

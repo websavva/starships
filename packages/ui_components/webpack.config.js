@@ -1,4 +1,4 @@
-const { getWebpackConfig } = require("@starships/webpack");
+const { getWebpackConfig } = require("@starships/webpack/src/index.js");
 const moduleFederationConfig = require("@starships/module-federation-config");
 
 module.exports = getWebpackConfig({
@@ -13,7 +13,6 @@ module.exports = getWebpackConfig({
   ],
   exposes: {
     "./styles/mq": "./src/styles/mq",
-    "./Button": "./src/Button",
     "./GlobalStyle": "./src/GlobalStyle",
     "./Logo": "./src/Logo",
     "./OuterSpaceBackground": "./src/OuterSpaceBackground",
