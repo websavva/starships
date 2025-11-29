@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/websavva/starships/compare/starships-v1.0.5...starships-v2.0.0) (2025-11-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **router:** HashRouter is used
+
+### Features
+
+* **router:** HashRouter is used ([2f44cc4](https://github.com/websavva/starships/commit/2f44cc47f7fe6ec99cc57b5ffad4e06695d662e1))
+
+
+### Bug Fixes
+
+* **styles:** dvh is used instead of vh ([6b2e7be](https://github.com/websavva/starships/commit/6b2e7be3a224136504b2d53a5f20645797d426ad))
+
 ## [1.0.5](https://github.com/websavva/starships/compare/starships-v1.0.4...starships-v1.0.5) (2025-11-29)
 
 
