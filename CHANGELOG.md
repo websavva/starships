@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/websavva/starships/compare/starships-v4.0.0...starships-v4.0.1) (2025-11-29)
+
+
+### Bug Fixes
+
+* Table borders were aligned ([dfdd5eb](https://github.com/websavva/starships/commit/dfdd5eb1df51501b4a28d98762543919f160edc3))
+
 ## [4.0.0](https://github.com/websavva/starships/compare/starships-v3.0.0...starships-v4.0.0) (2025-11-29)
 
 
