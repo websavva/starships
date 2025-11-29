@@ -41,6 +41,9 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    environment:
+      name: production
+      url: ${{ vars.APP_BASE_URL }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

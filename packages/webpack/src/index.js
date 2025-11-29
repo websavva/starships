@@ -81,7 +81,11 @@ exports.getWebpackConfig = (options) => async () => {
 
   let { pathname: publicPath } = new URL(getRemoteUrl(options.name));
 
-  publicPath = publicPath === "/" ? "auto" : publicPath;
+  if (publicPath === "/") {
+    publicPath = "auto";
+  } else if (!publicPath.endsWith("/")) {
+    publicPath += "/";
+  }
 
   return {
     entry: options.entry || "./src/index",
