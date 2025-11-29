@@ -73,6 +73,7 @@ const StarshipsListCard = styled(Card)`
     css`
       padding: 1.5rem 1rem;
       --clip-width: 5rem;
+      max-height: 70rem;
     `
   )}
 `;

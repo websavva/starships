@@ -9,7 +9,26 @@
     />
     <link rel="icon" href="<%= process.env.APP_BASE_URL %>/favicon.png" type="image/png">
     <base href="<%= process.env.APP_BASE_URL %>" />
+
+    <!-- Primary Meta Tags -->
     <title>Microfrontend-based Starships</title>
+    <meta name="title" content="Microfrontend-based Starships" />
+    <meta name="description" content="Explore starships from the Star Wars universe. Built with microfrontend architecture using Module Federation." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= process.env.APP_BASE_URL %>" />
+    <meta property="og:title" content="Microfrontend-based Starships" />
+    <meta property="og:description" content="Explore starships from the Star Wars universe. Built with microfrontend architecture using Module Federation." />
+    <meta property="og:image" content="<%= process.env.APP_BASE_URL %>/og.jpg" />
+    <meta property="og:site_name" content="Starships" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="<%= process.env.APP_BASE_URL %>" />
+    <meta name="twitter:title" content="Microfrontend-based Starships" />
+    <meta name="twitter:description" content="Explore starships from the Star Wars universe. Built with microfrontend architecture using Module Federation." />
+    <meta name="twitter:image" content="<%= process.env.APP_BASE_URL %>/og.jpg" />
   </head>
   <body>
     <div id="root"></div>
