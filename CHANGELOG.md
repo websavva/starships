@@ -1,5 +1,22 @@
 # Changelog
 
+## [3.0.0](https://github.com/websavva/starships/compare/starships-v2.1.0...starships-v3.0.0) (2025-11-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* linting was integrated
+
+### Features
+
+* linting was integrated ([f074368](https://github.com/websavva/starships/commit/f074368310223426d9f5fe7d08d2ad3f4b713d2e))
+* **types:** Typecheck was enhanced ([4081928](https://github.com/websavva/starships/commit/4081928f5ba1fa69700a59059842f1e1db09eb6a))
+
+
+### Bug Fixes
+
+* **deps:** Missing dep was added ([2e91418](https://github.com/websavva/starships/commit/2e91418851bec7bb868dd5f8226803821e216a33))
+
 ## [2.1.0](https://github.com/websavva/starships/compare/starships-v2.0.1...starships-v2.1.0) (2025-11-29)
 
 
