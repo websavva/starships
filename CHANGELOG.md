@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/websavva/starships/compare/starships-v1.0.2...starships-v1.0.3) (2025-11-29)
+
+
+### Bug Fixes
+
+* publicPath was set for Github Pages ([716325e](https://github.com/websavva/starships/commit/716325ea582d93a7122be3e57a2008d21015b167))
+
 ## [1.0.2](https://github.com/websavva/starships/compare/starships-v1.0.1...starships-v1.0.2) (2025-11-29)
 
 
