@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BrowserRouter, Routes, Route } from "react-router";
+import { HashRouter, Routes, Route } from "react-router";
 
 import GlobalStyle from "ui_components/GlobalStyle";
 
@@ -15,13 +15,13 @@ const App = () => (
   <Layout>
     <GlobalStyle />
 
-    <BrowserRouter basename={basename}>
+    <HashRouter basename={basename}>
       <Routes>
         <Route path="/" element={<Home />} />
 
         <Route path="/starships/:id" element={<Ship />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </Layout>
 );
 
